@@ -20,13 +20,9 @@
 <!-- Small favicon, typically used in tab icons or bookmarks -->
 <link rel="icon" type="image/png" href="components/assets/favicon-16x16.png" sizes="16x16" />
 
-<!-- Icon CDN -->
-<script src="https://cdn.jsdelivr.net/npm/@tabler/core@1.0.0-beta17/dist/js/tabler.min.js"></script>
-{{-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/core@1.0.0-beta17/dist/css/tabler.min.css"> --}}
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/core@1.0.0-beta17/dist/css/tabler-flags.min.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/core@1.0.0-beta17/dist/css/tabler-payments.min.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/core@1.0.0-beta17/dist/css/tabler-vendors.min.css">
+<!-- Tabler Icon -->
+<link rel="stylesheet" href="{{ asset('assets/tabler-icons/webfont/tabler-icons.css') }}">
+{{-- <link rel="stylesheet" href="./tabler-icons.css"> --}}
 
 
 <!-- Styles / Scripts -->
