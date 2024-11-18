@@ -12,27 +12,70 @@
 </head>
 
 <body class="ibm-plex-sans-regular antialiased">
-    <div class="fixed top-0 bottom-0 max-w-max p-[2.5vw] bg-black overflow-hidden flex flex-col gap-2">
-        {{-- <div class="bg-gradient-to-r from-[#FFFFFF3D] to-[#9999993D] p-7 rounded-md"></div> --}}
+    <div class="fixed bottom-0 top-0 flex max-w-fit flex-col justify-between bg-black px-2 md:px-3">
+        {{-- Logo --}}
+        {{-- <img class="mt-4 h-11 w-11 md:h-14 md:w-14" src="{{ asset('assets/icons/Icon Dark.png') }}" alt="Logo"> --}}
+        {{-- <img class="mt-4 h-11 w-11 md:h-14 md:w-14" src="{{ asset('assets/icons/Icon Light.png') }}" alt="Logo"> --}}
 
-        <div class="rounded-md p-px bg-gradient-to-r from-[#FFFFFF3D]/[24%] to-[#9999993D]/[24%]">
-            <div class="bg-[#fff]/[10%] px-4 py-2 rounded-[calc(0.4rem-1px)]">
-                <h1>1</h1>
+        {{-- Menu items Top --}}
+        <div class="flex flex-col items-center gap-4">
+            <img class="mt-4 h-11 w-11 md:h-14 md:w-14" src="{{ asset('assets/icons/Icon Dark.png') }}" alt="Logo">
+
+            {{-- Menu items --}}
+            {{-- <div class="rounded-lg bg-gradient-to-r from-[#ffffff50] via-[#cccccc50] to-[#ffffff50] p-[1px]">
+                <div
+                    class="flex h-11 w-11 items-center justify-center rounded-lg bg-white/10 shadow-xl shadow-gray-900/20 backdrop-blur-md md:h-14 md:w-14">
+                    <i class="ti ti-layout-dashboard text-2xl text-white opacity-90 md:text-3xl"></i>
+                </div>
+            </div> --}}
+            {{-- array --}}
+            {{-- [ti-school, ti-bolt, ti-code, ti-cube-spark, ti-puzzle] --}}
+
+            @foreach (['ti-school', 'ti-bolt', 'ti-code', 'ti-cube-spark', 'ti-puzzle'] as $icon)
+                <x-nav-item icon="{{ $icon }}" active="" />
+            @endforeach
+
+            <div class="group flex items-center justify-center">
+                <div class="flex h-11 w-11 items-center justify-center rounded-lg shadow-lg shadow-gray-900/10 backdrop-blur-sm transition group-hover:scale-110 group-hover:bg-white/20 md:h-14 md:w-14">
+                    <i class="ti ti-cube-spark text-2xl text-white opacity-60 transition group-hover:opacity-80 md:text-3xl"></i>
+                </div>
+            </div>
+
+        </div>
+
+        {{-- Menu item Bottom --}}
+        <div class="mb-4 flex items-center justify-center">
+            <i class="ti ti-user-hexagon text-2xl text-white opacity-90 md:text-3xl"></i>
+        </div>
+
+
+        {{-- <div class="fixed bottom-0 top-0 flex max-w-fit flex-col gap-4 overflow-y-auto bg-black px-2 md:px-3">
+        <!-- Menu items Top-->
+        <div class="flex-col gap-10">
+            <!-- Logo -->
+            <img class="mt-4 h-11 w-11 md:h-14 md:w-14" src="{{ asset('assets/icons/Icon Dark.png') }}" alt="">
+
+            <!-- Menu items -->
+            <div class="rounded-lg bg-gradient-to-r from-[#ffffff50] via-[#cccccc50] to-[#ffffff50] p-[1px]">
+                <div
+                    class="flex h-11 w-11 items-center justify-center rounded-lg bg-white/10 shadow-xl shadow-gray-900/20 backdrop-blur-md md:h-14 md:w-14">
+                    <i class="ti ti-layout-dashboard text-2xl text-white opacity-90 md:text-3xl"></i>
+                </div>
             </div>
         </div>
-        {{-- <div class="rounded-md p-px bg-gradient-to-r from-[#FFFFFF3D]/[24%] to-[#9999993D]/[24%]">
-            <div class="bg-[#fff]/[10%] px-4 py-2 rounded-[calc(0.4rem-1px)]">
-                <h1>2</h1>
-            </div>
-        </div>
-        <div class="rounded-md p-px bg-gradient-to-r from-[#FFFFFF3D]/[24%] to-[#9999993D]/[24%]">
-            <div class="bg-[#fff]/[10%] px-4 py-2 rounded-[calc(0.4rem-1px)]">
-                <h1>3</h1>
-            </div>
+
+        <!-- Menu item Bottom -->
+        <div>
+            <i class="ti ti-user-hexagon text-2xl text-white opacity-90 md:text-3xl"></i>
         </div> --}}
 
-        {{-- <div class="p-7 bg-gray-300 rounded-md bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-40 border border-gray-100"></div> --}}
-        {{-- <div class="bg-gradient-to-r from-[#FFFFFF3D] to-[#9999993D] p-7 rounded-md"></div> --}}
+        <!-- Container for menu item with gradient border -->
+        {{-- <div class="rounded-md p-px bg-gradient-to-r from-[#FFFFFF3D]/[24%] to-[#9999993D]/[24%]">
+            <!-- Inner container for menu item with background and padding -->
+            <div class="bg-[#fff]/[10%] px-4 py-3 rounded-md flex items-center justify-center">
+                <i class="ti ti-alert-hexagon-filled md:text-2xl text-xl"></i>
+            </div>
+        </div> --}}
 
     </div>
 </body>
