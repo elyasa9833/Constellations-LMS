@@ -1,6 +1,7 @@
 
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+{{-- <meta name="viewport" content="width=device-width, initial-scale=1"> --}}
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
 <title>Constellations</title>
 
@@ -22,8 +23,9 @@
 
 <!-- Tabler Icon -->
 <link rel="stylesheet" href="{{ asset('assets/tabler-icons/webfont/tabler-icons.css') }}">
-{{-- <link rel="stylesheet" href="./tabler-icons.css"> --}}
 
+<!-- Custom Scrol -->
+<link rel="stylesheet" href="{{ asset('assets/css/scroll.css') }}">
 
 <!-- Styles / Scripts -->
 @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
