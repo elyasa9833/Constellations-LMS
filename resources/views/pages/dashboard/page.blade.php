@@ -12,72 +12,58 @@
 </head>
 
 <body class="ibm-plex-sans-regular antialiased">
-    <div class="fixed bottom-0 top-0 flex max-w-fit flex-col justify-between bg-black px-2 md:px-3">
-        {{-- Logo --}}
-        {{-- <img class="mt-4 h-11 w-11 md:h-14 md:w-14" src="{{ asset('assets/icons/Icon Dark.png') }}" alt="Logo"> --}}
-        {{-- <img class="mt-4 h-11 w-11 md:h-14 md:w-14" src="{{ asset('assets/icons/Icon Light.png') }}" alt="Logo"> --}}
+    <div class="fixed flex h-screen w-full">
+        <!-- Sidebar Menu -->
+        <div class="bottom-0 top-0 flex max-w-fit flex-col justify-between bg-black px-2 md:px-3">
+            {{-- Menu items Top --}}
+            <div class="flex flex-col items-center gap-4">
+                {{-- Logo --}}
+                <img class="mt-4 h-11 w-11" src="{{ asset('assets/icons/Icon Dark.svg') }}" alt="Logo">
 
-        {{-- Menu items Top --}}
-        <div class="flex flex-col items-center gap-4">
-            <img class="mt-4 h-11 w-11 md:h-14 md:w-14" src="{{ asset('assets/icons/Icon Dark.png') }}" alt="Logo">
+                <x-nav-item icon="ti-school" active="y" />
+                @foreach (['ti-bolt', 'ti-code', 'ti-cube-spark', 'ti-puzzle'] as $icon)
+                    <x-nav-item icon="{{ $icon }}" active="" />
+                @endforeach
 
-            {{-- Menu items --}}
-            {{-- <div class="rounded-lg bg-gradient-to-r from-[#ffffff50] via-[#cccccc50] to-[#ffffff50] p-[1px]">
-                <div
-                    class="flex h-11 w-11 items-center justify-center rounded-lg bg-white/10 shadow-xl shadow-gray-900/20 backdrop-blur-md md:h-14 md:w-14">
-                    <i class="ti ti-layout-dashboard text-2xl text-white opacity-90 md:text-3xl"></i>
-                </div>
-            </div> --}}
-            {{-- array --}}
-            {{-- [ti-school, ti-bolt, ti-code, ti-cube-spark, ti-puzzle] --}}
+            </div>
 
-            @foreach (['ti-school', 'ti-bolt', 'ti-code', 'ti-cube-spark', 'ti-puzzle'] as $icon)
-                <x-nav-item icon="{{ $icon }}" active="" />
-            @endforeach
-
-            <div class="group flex items-center justify-center">
-                <div class="flex h-11 w-11 items-center justify-center rounded-lg shadow-lg shadow-gray-900/10 backdrop-blur-sm transition group-hover:scale-110 group-hover:bg-white/20 md:h-14 md:w-14">
-                    <i class="ti ti-cube-spark text-2xl text-white opacity-60 transition group-hover:opacity-80 md:text-3xl"></i>
-                </div>
+            {{-- Menu item Bottom --}}
+            <div class="mb-4 flex items-center justify-center">
+                <i class="ti ti-user-hexagon text-2xl text-white opacity-90 md:text-3xl"></i>
             </div>
 
         </div>
 
-        {{-- Menu item Bottom --}}
-        <div class="mb-4 flex items-center justify-center">
-            <i class="ti ti-user-hexagon text-2xl text-white opacity-90 md:text-3xl"></i>
-        </div>
+        <!-- Main Content -->
 
+        <div class="flex flex-1 flex-col gap-4 overflow-y-auto bg-[#191919] p-4">
 
-        {{-- <div class="fixed bottom-0 top-0 flex max-w-fit flex-col gap-4 overflow-y-auto bg-black px-2 md:px-3">
-        <!-- Menu items Top-->
-        <div class="flex-col gap-10">
-            <!-- Logo -->
-            <img class="mt-4 h-11 w-11 md:h-14 md:w-14" src="{{ asset('assets/icons/Icon Dark.png') }}" alt="">
+            <!-- Header -->
+            <x-header title="dashboard" />
 
-            <!-- Menu items -->
-            <div class="rounded-lg bg-gradient-to-r from-[#ffffff50] via-[#cccccc50] to-[#ffffff50] p-[1px]">
-                <div
-                    class="flex h-11 w-11 items-center justify-center rounded-lg bg-white/10 shadow-xl shadow-gray-900/20 backdrop-blur-md md:h-14 md:w-14">
-                    <i class="ti ti-layout-dashboard text-2xl text-white opacity-90 md:text-3xl"></i>
+            <!-- Main Content -->
+            <div class="grid-rows-16 grid h-full grid-cols-11 gap-4 overflow-y-auto bg-[#191919]">
+                {{-- <div class="flex col-span-11 items-center justify-center rounded-md bg-slate-400 shadow-md">Header</div> --}}
+                <div class="col-span-9 row-span-2 flex items-center justify-center rounded-md bg-red-400 shadow-md">
+                    Static</div>
+                {{-- <div class="flex col-span-2 row-span-3 items-center justify-center rounded-md bg-yellow-400 shadow-md">Info</div> --}}
+                <div class="col-span-2 row-span-3 flex items-center justify-center rounded-md bg-yellow-400 shadow-md">
+                    Info</div>
+                <div class="col-span-9 row-span-5 flex items-center justify-center rounded-md bg-gray-400 shadow-md">
+                    Stat & Calendar</div>
+                {{-- <div class="flex col-span-2 row-span-9 items-center justify-center rounded-md bg-blue-400 shadow-md">Chattago</div> --}}
+                <div class="row-span-8 col-span-2 flex items-center justify-center rounded-lg shadow-lg">
+                    <x-chattago />
                 </div>
+                <div class="col-span-9 row-span-6 flex items-center justify-center rounded-md bg-green-400 shadow-md">Recent Course</div>
+                <div class="col-span-2 row-span-2 flex items-center justify-center rounded-md bg-blue-400 shadow-md">Comunity</div>
+                @foreach (range(1, 11) as $number)
+                    <div class="flex items-center justify-center rounded-md bg-gray-400 shadow-md">{{ $number }}
+                    </div>
+                @endforeach
             </div>
         </div>
-
-        <!-- Menu item Bottom -->
-        <div>
-            <i class="ti ti-user-hexagon text-2xl text-white opacity-90 md:text-3xl"></i>
-        </div> --}}
-
-        <!-- Container for menu item with gradient border -->
-        {{-- <div class="rounded-md p-px bg-gradient-to-r from-[#FFFFFF3D]/[24%] to-[#9999993D]/[24%]">
-            <!-- Inner container for menu item with background and padding -->
-            <div class="bg-[#fff]/[10%] px-4 py-3 rounded-md flex items-center justify-center">
-                <i class="ti ti-alert-hexagon-filled md:text-2xl text-xl"></i>
-            </div>
-        </div> --}}
-
     </div>
-</body>
 
+</body>
 </html>
