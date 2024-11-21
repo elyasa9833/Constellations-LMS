@@ -27,6 +27,9 @@
 <!-- Custom Scrol -->
 <link rel="stylesheet" href="{{ asset('assets/css/scroll.css') }}">
 
+<!-- Custom JS -->
+<script type="text/javascript" src="{{asset('assets/js/vanilla-tilt.min.js')}}"></script>
+
 <!-- Styles / Scripts -->
 @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
     @vite(['resources/css/app.css', 'resources/js/app.js'])

@@ -54,7 +54,7 @@
             <div class="flex col-span-3 h-24 items-center justify-center rounded-md bg-blue-400 shadow-md">3</div>
             @foreach (range(1, 20) as $number)
                 <!-- Grid Items -->
-            {{-- <div class="flex h-24 items-center justify-center rounded-md bg-slate-400 shadow-md">1</div> --}}
+            <div class="flex h-24 items-center justify-center rounded-md bg-slate-400 shadow-md">1</div>
             <div class="flex h-24 items-center justify-center rounded-md bg-red-400 shadow-md">2</div>
             <div class="flex h-24 items-center justify-center rounded-md bg-yellow-400 shadow-md">3</div>
             <div class="flex h-24 items-center justify-center rounded-md bg-green-400 shadow-md">4</div>
