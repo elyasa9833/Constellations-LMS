@@ -5,7 +5,8 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\GoogleAuthController;
 
 Route::get('/', function () {
-    return view('welcome');
+    // return view('welcome');
+    return view('pages.dashboard.page');
 });
 
 // Google Auth
