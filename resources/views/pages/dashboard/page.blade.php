@@ -190,7 +190,7 @@
                     </div>
 
                     <div class="col-span-9 row-span-6 flex items-center justify-center rounded-md bg-gray-700 shadow-md">
-                        Recent Course
+                        {{-- Recent Course --}}
                     </div>
                     <div class="col-span-2 row-span-2 flex items-center justify-center rounded-md bg-blue-400 shadow-md">
                         Community
