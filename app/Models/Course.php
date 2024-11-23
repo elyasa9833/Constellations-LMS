@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\User;
+use App\Models\CourseChapter;
 use App\Models\CourseCategory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
@@ -40,5 +41,10 @@ class Course extends Model
     public function category()
     {
         return $this->belongsTo(CourseCategory::class, 'category_id');
+    }
+
+    public function chapters()
+    {
+        return $this->hasMany(CourseChapter::class);
     }
 }
