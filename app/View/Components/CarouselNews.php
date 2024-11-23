@@ -2,6 +2,7 @@
 
 namespace App\View\Components;
 
+use Carbon\Carbon; // Add this line to import the Carbon class
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Http;
@@ -19,6 +20,10 @@ class CarouselNews extends Component
 
         if ($response->successful()) {
             $this->carouselItems = collect($response->json('listEvents'))
+                ->filter(function ($event) {
+                    $eventDate = Carbon::parse($event['beginTime']);
+                    return $eventDate->isToday() || $eventDate->isFuture();
+                })
                 ->map(fn ($event) => [
                     'image' => $event['imageLogo'],
                     'title' => $event['name'],
@@ -26,7 +31,8 @@ class CarouselNews extends Component
                     'link' => $event['link'],
                 ])
                 ->toArray();
-        } else {
+        }
+        else {
             $this->carouselItems = [
                 [
                     'image' => 'https://dicoding-web-img.sgp1.cdn.digitaloceanspaces.com/original/event/dos-offline_roadshow_1_coding_camp_2025_powered_by_dbs_foundation_goes_to_bandung_logo_181124100353.png',
