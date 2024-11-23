@@ -4,8 +4,18 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\GoogleAuthController;
 
+// Route::get('/', function () {
+//     // return view('welcome');
+//     $carouselItems = [
+//         'Slide 1 - Welcome to Laravel',
+//         'Slide 2 - Building with Alpine.js',
+//         'Slide 3 - Dynamic Carousel with Tailwind'
+//     ];
+//     return view('pages.dashboard.page', compact('carouselItems'));
+// });
+
 Route::get('/', function () {
-    // return view('welcome');
+    // return view('layouting', compact('carouselItems'));
     return view('pages.dashboard.page');
 });
 
@@ -20,6 +30,6 @@ Route::post('logout', [AuthController::class, 'logout']);
 
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/dashboard', function (Request $request) {
-        return "ini dashboard";
+        return view('pages.dashboard.page');
     });
 });

@@ -8,6 +8,11 @@ export default defineConfig({
             refresh: true,
         }),
     ],
+    resolve: {
+        alias: {
+            '$': 'jQuery'
+        },
+    },
 
     // configure the Vite dev server (Zero Tier IP)
     server: {
