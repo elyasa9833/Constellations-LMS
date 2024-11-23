@@ -132,7 +132,7 @@
                 $('#modal').removeClass('flex').addClass('hidden');
                 }
             });
-            });
+        });
     </script>
 
 </body>
