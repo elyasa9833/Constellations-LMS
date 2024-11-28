@@ -16,7 +16,10 @@ use App\Http\Controllers\GoogleAuthController;
 
 Route::get('/', function () {
     // return view('layouting', compact('carouselItems'));
-    return view('pages.dashboard.page');
+    // return view('pages.dashboard.page');
+    // return view('test');
+    // return view('pages.dashboard.view');
+    return view('pages.template.view');
 });
 
 // Google Auth
@@ -29,7 +32,21 @@ Route::post('register', [AuthController::class, 'register']);
 Route::post('logout', [AuthController::class, 'logout']);
 
 Route::group(['middleware' => ['auth']], function () {
-    Route::get('/dashboard', function (Request $request) {
-        return view('pages.dashboard.page');
+
+    Route::prefix('dashboard')->name('dashboard.')->group(function () {
+        // Route::get('/', [DashboardController::class, 'index'])->name('index');
+        Route::get('/',  function(){view('pages.dashboard.view');});
     });
+
+    // Route::prefix('course')->name('course.')->group(function () {
+    //     Route::get('/', [CourseController::class, 'index'])->name('index');
+    // });
+
+    // Route::prefix('user')->name('user.')->group(function () {
+    //     Route::get('/', [UserController::class, 'index'])->name('index');
+    // });
+
+    // Route::get('/dashboard', function (Request $request) {
+    //     return view('pages.dashboard.page');
+    // });
 });

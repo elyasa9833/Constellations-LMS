@@ -3,8 +3,6 @@
 {{-- <meta name="viewport" content="width=device-width, initial-scale=1"> --}}
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
-<title>Constellations</title>
-
 <!-- icon -->
 <!-- Apple touch icon for iOS devices when saving the site to the home screen -->
 <link rel="apple-touch-icon" type="image/png" href="components/assets/apple-touch-icon.png" sizes="60x60" />
