@@ -11,13 +11,18 @@ class NavItem extends Component
 
     public $icon;
     public $active;
+    public $title;
+    public $url;
+
     /**
      * Create a new component instance.
      */
-    public function __construct($icon, $active = false)
+    public function __construct($icon, $active = false, $title, $url)
     {
         $this->icon = $icon;
         $this->active = $active;
+        $this->title = $title;
+        $this->url = $url;
     }
 
     /**
