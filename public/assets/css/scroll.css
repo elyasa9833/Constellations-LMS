@@ -1,19 +1,18 @@
     /* Scrollbar umum */
     ::-webkit-scrollbar {
         width: 16px; /* Lebar scrollbar lebih besar */
+        height: 10px; /* Tinggi scrollbar lebih besar */
     }
 
     /* Track scrollbar */
     ::-webkit-scrollbar-track {
         background: #1a1a1a; /* Warna track abu gelap */
-        border-radius: 12px; /* Sudut melengkung */
         box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5); /* Efek kedalaman */
     }
 
     /* Thumb scrollbar */
     ::-webkit-scrollbar-thumb {
         background: #383838; /* Gradient elegan */
-        border-radius: 12px; /* Sudut melengkung */
         border: 3px solid #1a1a1a; /* Memberikan efek jarak */
         transition: background 0.3s ease, transform 0.3s ease; /* Transisi lembut */
     }
@@ -29,7 +28,6 @@
         background: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ffffff'%3E%3Cpath d='M12 8l-6 6h12z'/%3E%3C/svg%3E") no-repeat center;
         background-size: 10px 10px; /* Ukuran icon lebih besar */
         background-color: #1a1a1a; /* Warna tombol */
-        border-radius: 50%; /* Membuat tombol menjadi bulat */
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.6); /* Shadow lebih besar */
         transition: transform 0.3s ease, background-color 0.3s ease;
     }
@@ -45,7 +43,6 @@
         background: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ffffff'%3E%3Cpath d='M12 16l6-6H6z'/%3E%3C/svg%3E") no-repeat center;
         background-size: 10px 10px; /* Ukuran icon lebih besar */
         background-color: #1a1a1a;
-        border-radius: 50%;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
         transition: transform 0.3s ease, background-color 0.3s ease;
     }
