@@ -6,23 +6,15 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class NavItem extends Component
+class AppLayout extends Component
 {
-
-    public $icon;
-    public $active;
     public $title;
-    public $url;
-
     /**
      * Create a new component instance.
      */
-    public function __construct($icon, $active = false, $title, $url)
+    public function __construct($title)
     {
-        $this->icon = $icon;
-        $this->active = $active;
         $this->title = $title;
-        $this->url = $url;
     }
 
     /**
@@ -30,6 +22,6 @@ class NavItem extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.nav-item');
+        return view('components.Layout.AppLayout');
     }
 }
