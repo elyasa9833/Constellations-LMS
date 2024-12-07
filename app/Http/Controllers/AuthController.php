@@ -29,6 +29,11 @@ class AuthController extends Controller
         return redirect('/dashboard');
     }
 
+    public function loginPage()
+    {
+        return redirect('/');
+    }
+
     public function login(Request $request)
     {
         $request->validate([
