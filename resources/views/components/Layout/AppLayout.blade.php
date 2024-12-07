@@ -12,7 +12,6 @@
 
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <style>
-
         /* CSS untuk efek fade */
         .loading-layer {
             opacity: 0;
@@ -29,6 +28,7 @@
         }
 
         @layer utilities {
+
             /* Glow effect for the logo */
             .glow-effect {
                 filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
@@ -37,14 +37,14 @@
             .animate-smooth-fade {
                 font-size: 2rem;
                 font-weight: 600;
-                color: white; /* Fallback color for browsers without gradient support */
-                background: linear-gradient(
-                90deg,
-                rgba(100, 100, 100, 1) 0%,
-                rgba(255, 255, 255, 1) 25%,
-                rgba(255, 255, 255, 1) 50%,
-                rgba(255, 255, 255, 1) 75%,
-                rgba(100, 100, 100, 1) 100%);
+                color: white;
+                /* Fallback color for browsers without gradient support */
+                background: linear-gradient(90deg,
+                        rgba(100, 100, 100, 1) 0%,
+                        rgba(255, 255, 255, 1) 25%,
+                        rgba(255, 255, 255, 1) 50%,
+                        rgba(255, 255, 255, 1) 75%,
+                        rgba(100, 100, 100, 1) 100%);
                 background-size: 200%;
                 -webkit-background-clip: text;
                 -webkit-text-fill-color: transparent;
@@ -56,6 +56,7 @@
                 0% {
                     background-position: 200% 0;
                 }
+
                 100% {
                     background-position: -200% 0;
                 }
@@ -67,25 +68,45 @@
             }
 
             @keyframes slowBounce {
-                0%, 100% {
+
+                0%,
+                100% {
                     transform: translateY(0);
                 }
+
                 50% {
                     transform: translateY(-10px);
                 }
             }
         }
 
+        @keyframes rotateGradient {
+            0% {
+                /* background: linear-gradient(90deg, #e3ffe7 0%, #d9e7ff 100%); */
+                background: linear-gradient(90deg, #0700b8 0%, #00ff88 100%);
+            }
+
+            100% {
+                /* background: linear-gradient(360deg, #e3ffe7 0%, #d9e7ff 100%); */
+                background: linear-gradient(360deg, #0700b8 0%, #00ff88 100%);
+            }
+        }
+
+        #gradient-box {
+            animation: rotateGradient 15s linear infinite;
+        }
     </style>
 </head>
 
 <body class="antialiased ibm-plex-sans-regular bg-[#191919]">
     <!-- Simplicity is the ultimate sophistication. - Leonardo da Vinci -->
 
-    <div id="loading" class="fixed inset-0 z-10 flex items-center justify-center w-full h-full bg-opacity-50 bg-black/10 backdrop-blur-md loading-layer">
+    <div id="loading"
+        class="fixed inset-0 z-10 flex items-center justify-center w-full h-full bg-opacity-50 bg-black/10 backdrop-blur-md loading-layer">
         <div class="flex flex-col items-center justify-center">
             <!-- Logo with subtle glow effect -->
-            <img class="w-40 h-40 animate-slow-bounce glow-effect" src="{{ asset('assets/icons/Icon Dark.svg') }}" alt="Logo"/>
+            <img class="w-40 h-40 animate-slow-bounce glow-effect" src="{{ asset('assets/icons/Icon Dark.svg') }}"
+                alt="Logo" />
             <!-- Elegant Loading Text -->
             <div class="mt-4 text-2xl font-semibold tracking-wide text-white opacity-90 animate-smooth-fade">
                 Please wait...
@@ -105,18 +126,20 @@
                 <!-- Logo -->
                 <!-- Nav Item -->
                 @php
-                    $menus = [
-                        ['icon' => 'ti-school', 'route' => 'dashboard', 'title' => 'Dashboard', 'url' => url('/dashboard')],
-                        ['icon' => 'ti-book', 'route' => 'course', 'title' => 'Course', 'url' => url('/course')],
-                        // ['icon' => 'ti-cube-spark', 'route' => 'user', 'title' => 'User', 'url' => url('/dashboard')],
-                        ['icon' => 'ti-puzzle', 'route' => 'template', 'title' => 'User', 'url' => url('/template')],
-                    ];
+                $menus = [
+                ['icon' => 'ti-school', 'route' => 'dashboard', 'title' => 'Dashboard', 'url' => url('/dashboard')],
+                ['icon' => 'ti-book', 'route' => 'course', 'title' => 'Course', 'url' => url('/course')],
+                // ['icon' => 'ti-cube-spark', 'route' => 'user', 'title' => 'User', 'url' => url('/dashboard')],
+                ['icon' => 'ti-puzzle', 'route' => 'template', 'title' => 'User', 'url' => url('/template')],
+                ];
                 @endphp
 
                 @foreach ($menus as $menu)
-                <x-nav-item :icon="$menu['icon'] " :active=" Request::is($menu['route'].'*') ? '1' : ''" :title=" $menu['title']" :url=" $menu['url']"/>
+                <x-nav-item :icon="$menu['icon'] " :active=" Request::is($menu['route'].'*') ? '1' : ''"
+                    :title=" $menu['title']" :url=" $menu['url']" />
                 @endforeach
-                {{-- <x-nav-item icon="ti-school" active="1" />
+                {{--
+                <x-nav-item icon="ti-school" active="1" />
                 @foreach (['ti-bolt', 'ti-code', 'ti-cube-spark', 'ti-puzzle'] as $icon)
                 <x-nav-item icon="{{ $icon }}" active="" />
                 @endforeach --}}
@@ -125,9 +148,12 @@
             <!-- Menu items Top -->
 
             <!-- Menu item Bottom -->
-            <div class="flex items-center justify-center mb-4 rounded-lg group" data-tilt data-tilt-reverse="true" data-tilt-glare="true" data-tilt-max-glare="0.5">
-                <button id="openModal" class="flex h-11 w-11 items-center justify-center rounded-lg shadow-lg shadow-gray-900/10 backdrop-blur-sm transition group-hover:scale-110  opacity-80 group-hover:bg-gradient-to-tl from-[#ffffff2a] via-[#cccccc50] to-[#ffffff2a] hover:border hover:border-white/20 md:h-14 md:w-14">
-                    <i class="text-2xl text-white transition ti ti-user-hexagon opacity-80 group-hover:opacity-100 md:text-3xl"></i>
+            <div class="flex items-center justify-center mb-4 rounded-lg group" data-tilt data-tilt-reverse="true"
+                data-tilt-glare="true" data-tilt-max-glare="0.5">
+                <button id="openModal"
+                    class="flex h-11 w-11 items-center justify-center rounded-lg shadow-lg shadow-gray-900/10 backdrop-blur-sm transition group-hover:scale-110  opacity-80 group-hover:bg-gradient-to-tl from-[#ffffff2a] via-[#cccccc50] to-[#ffffff2a] hover:border hover:border-white/20 md:h-14 md:w-14">
+                    <i
+                        class="text-2xl text-white transition ti ti-user-hexagon opacity-80 group-hover:opacity-100 md:text-3xl"></i>
                 </button>
             </div>
             <!-- Menu item Bottom -->
@@ -160,7 +186,7 @@
     @include('scaffold.modal.login')
 
     <script>
-    // Fade In
+        // Fade In
     window.onload = function () {
         const slotTitle = "{{  strtolower($title) }}".l;
         const slotContainer = document.getElementById('layout-container');
@@ -218,6 +244,7 @@
         });
     });
 
-</script>
+    </script>
 </body>
+
 </html>

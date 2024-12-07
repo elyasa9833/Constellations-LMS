@@ -10,7 +10,7 @@
 
         <h1 class="text-2xl tracking-wide uppercase ">SIGN IN INTO YOUR ACCOUNT</h1>
         <!-- google button login -->
-        <button onclick="window.location.href='/auth/google/redirect'" class="w-full items-center hover:scale-105 active:scale-100 transition duration-200 ease-in-out flex justify-center relative bg-[#292929] py-2">
+        <button onclick="window.location.href='/auth/google/redirect'" class="w-full items-center transition duration-200 ease-in-out flex justify-center relative bg-[#292929] py-2">
             <img class="h-[1.2em] w-[1.2em] hover:scale-125 active:scale-100 transition duration-200 ease-in-out left-5 absolute" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/google/google-original.svg"/>
             <div class="flex items-center justify-center gap-2 transition duration-200 ease-in-out hover:scale-105 active:scale-100">
                 <span class="text-base ibm-plex-sans-light">Sign in with Google</span>
