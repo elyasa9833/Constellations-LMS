@@ -79,22 +79,6 @@
                 }
             }
         }
-
-        @keyframes rotateGradient {
-            0% {
-                /* background: linear-gradient(90deg, #e3ffe7 0%, #d9e7ff 100%); */
-                background: linear-gradient(90deg, #0700b8 0%, #00ff88 100%);
-            }
-
-            100% {
-                /* background: linear-gradient(360deg, #e3ffe7 0%, #d9e7ff 100%); */
-                background: linear-gradient(360deg, #0700b8 0%, #00ff88 100%);
-            }
-        }
-
-        #gradient-box {
-            animation: rotateGradient 15s linear infinite;
-        }
     </style>
 </head>
 
@@ -105,17 +89,17 @@
         class="fixed inset-0 z-10 flex items-center justify-center w-full h-full bg-opacity-50 bg-black/10 backdrop-blur-md loading-layer">
         <div class="flex flex-col items-center justify-center">
             <!-- Logo with subtle glow effect -->
-            <img class="w-40 h-40 animate-slow-bounce glow-effect" src="{{ asset('assets/icons/Icon Dark.svg') }}"
+            <img class="w-28 h-28 md:w-40 md:h-40 animate-slow-bounce glow-effect" src="{{ asset('assets/icons/Icon Dark.svg') }}"
                 alt="Logo" />
             <!-- Elegant Loading Text -->
-            <div class="mt-4 text-2xl font-semibold tracking-wide text-white opacity-90 animate-smooth-fade">
+            <div class="mt-4 text-xl md:text-2xl font-semibold tracking-wide text-white opacity-90 animate-smooth-fade">
                 Please wait...
             </div>
         </div>
     </div>
 
     <!-- Scafold -->
-    <div id="content" class="fixed flex w-full h-screen load-container">
+    <div id="content" class="fixed flex w-full h-full load-container">
 
         <!-- Side Nav -->
         <div class="top-0 bottom-0 flex flex-col justify-between px-2 bg-black max-w-fit md:px-3">

@@ -33,16 +33,20 @@ Route::post('logout', [AuthController::class, 'logout']);
 
 Route::group(['middleware' => ['auth']], function () {
 
+    /* Route Group For Dashboard*/
     Route::prefix('dashboard')->name('dashboard.')->group(function () {
         // Route::get('/', [DashboardController::class, 'index'])->name('index');
         Route::get('/',  function(){return view('pages.dashboard.view');});
     });
 
+    /* Route Group For Course*/
     Route::prefix('course')->name('course.')->group(function () {
+        Route::get('/chapter',  function(){return view('pages.course_chapter.view');});
         Route::get('/',  function(){return view('pages.course.view');});
         // Route::get('/', [CourseController::class, 'index'])->name('index');
     });
 
+    /* Route Group For template*/
     Route::prefix('template')->name('template.')->group(function () {
         Route::get('/',  function(){return view('pages.template.view');});
         // Route::get('/', [UserController::class, 'index'])->name('index');
