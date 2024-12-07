@@ -27,9 +27,6 @@ Route::get('/auth/google/redirect', [GoogleAuthController::class, 'redirect']);
 Route::get('/auth/google/callback', [GoogleAuthController::class, 'callback']);
 
 // Auth
-Route::get('login', [AuthController::class, 'loginPage'])->name('login');
-Route::post('login', [AuthController::class, 'login']);
-Route::post('register', [AuthController::class, 'register']);
 Route::post('logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::group(['middleware' => ['auth']], function () {
