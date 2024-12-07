@@ -8,6 +8,20 @@
             </button>
         </div>
 
+        @auth
+        <h1 class="text-2xl tracking-wide uppercase ">Are You Want To Logout?</h1>
+
+        <form action="{{ route('logout') }}" method="post">
+            @csrf
+            <button type="submit" class="w-full items-center transition duration-200 ease-in-out flex justify-center relative bg-[#292929] py-2">
+                <div class="flex items-center justify-center gap-2 transition duration-200 ease-in-out hover:scale-105 active:scale-100">
+                    <span class="text-base ibm-plex-sans-light">Logout</span>
+                </div>
+            </button>
+        </form>
+        @endauth
+
+        @guest
         <h1 class="text-2xl tracking-wide uppercase ">SIGN IN INTO YOUR ACCOUNT</h1>
         <!-- google button login -->
         <button onclick="window.location.href='/auth/google/redirect'" class="w-full items-center transition duration-200 ease-in-out flex justify-center relative bg-[#292929] py-2">
@@ -16,6 +30,7 @@
                 <span class="text-base ibm-plex-sans-light">Sign in with Google</span>
             </div>
         </button>
+        @endguest
     </div>
 </div>
 <!-- Login Modal -->

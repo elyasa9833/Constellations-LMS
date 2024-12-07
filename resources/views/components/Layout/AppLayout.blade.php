@@ -136,8 +136,14 @@
                 data-tilt-glare="true" data-tilt-max-glare="0.5">
                 <button id="openModal"
                     class="flex h-11 w-11 items-center justify-center rounded-lg shadow-lg shadow-gray-900/10 backdrop-blur-sm transition group-hover:scale-110  opacity-80 group-hover:bg-gradient-to-tl from-[#ffffff2a] via-[#cccccc50] to-[#ffffff2a] hover:border hover:border-white/20 md:h-14 md:w-14">
+                    @auth
+                        <img src="{{auth()->user()->avatar}}" alt="foto profil" class="rounded-full">
+                    @endauth
+
+                    @guest
                     <i
-                        class="text-2xl text-white transition ti ti-user-hexagon opacity-80 group-hover:opacity-100 md:text-3xl"></i>
+                    class="text-2xl text-white transition ti ti-user-hexagon opacity-80 group-hover:opacity-100 md:text-3xl"></i>
+                    @endguest
                 </button>
             </div>
             <!-- Menu item Bottom -->

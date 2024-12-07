@@ -44,6 +44,11 @@
         <!-- Main Container -->
         <div class="flex flex-1 flex-col gap-4 overflow-y-auto bg-[#191919] p-6">
 
+            <!-- Alert sementara -->
+            @if (session('error'))
+                <script>alert("{{ session('error') }}");</script>
+            @endif
+
             <!-- Header -->
             <x-header title="dashboard" />
 

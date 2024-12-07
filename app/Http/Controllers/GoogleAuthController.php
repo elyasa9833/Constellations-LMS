@@ -16,21 +16,31 @@ class GoogleAuthController extends Controller
 
     public function callback()
     {
-        $googleUser = Socialite::driver('google')->user();
+        if (request()->has('error')) {
+            return redirect('/')->with('error', 'Login dibatalkan.');
+        }
 
-        $user = User::updateOrCreate(
-            [
-                'email' => $googleUser->email,
-            ],
-            [
-                'name' => $googleUser->name,
-                'email' => $googleUser->email,
-                'password' => bcrypt('password'),
-            ]
-        );
+        try {
+            $googleUser = Socialite::driver('google')->user();
 
-        Auth::login($user);
+            $user = User::firstOrCreate(
+                [
+                    'google_id' => $googleUser->getId()
+                ],
+                [
+                    'username' => $googleUser->getName(),
+                    'nickname' => $googleUser->getName(),
+                    'email' => $googleUser->getEmail(),
+                    'avatar' => $googleUser->getAvatar(),
+                    'email_verified_at' => now()
+                ]
+            );
 
-        return redirect('/dashboard');
+            Auth::login($user);
+            return redirect('/dashboard');
+
+        } catch (\Exception $e) {
+            return redirect('/')->with('error', 'Terjadi kesalahan saat login.');
+        }
     }
 }
