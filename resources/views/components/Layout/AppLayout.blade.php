@@ -106,7 +106,7 @@
             <!-- Menu items Top -->
             <div class="flex flex-col items-center gap-4">
                 <!-- Logo -->
-                <img class="mt-4 h-11 w-11" src="{{ asset('assets/icons/Icon Dark.svg') }}" alt="Logo">
+                <img class="mt-4 h-9 w-9 md:h-11 md:w-11 lg:h-14 lg:w-14" src="{{ asset('assets/icons/Icon Dark.svg') }}" alt="Logo">
                 <!-- Logo -->
                 <!-- Nav Item -->
                 @php
