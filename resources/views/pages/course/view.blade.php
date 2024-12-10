@@ -205,77 +205,132 @@
                 </div> --}}
 
                 <div x-show="activeTab === 'home'"
-                    class="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 justify-items-center">
-                    <!-- Static Gradient Card -->
-                    <div class="w-[150px] md:w-[200px] lg:w-[275px] xl:w-[325px] bg-[#000000] shadow-xl overflow-hidden relative rounded-lg"
-                        style="background: linear-gradient(90deg, #e3ffe7 0%, #d9e7ff 100%); padding: 3px;">
+                class="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 justify-items-center overflow-y-scroll">
 
-                        <!-- Inner Card -->
+
+
+                    <!--Moving Gradient Card Alpine Array-->
+                    <div x-data="{
+                            deg: 0,
+                            direction: 1,
+                            colors: ['#FC466B', '#3F5EFB'], // Array warna gradien
+                        }"
+                        x-init="setInterval(() => {
+                            deg += direction * 5.1;
+                            if (deg >= 720 || deg <= 0) {
+                                direction *= -1;  // Membalik arah putaran
+                            }
+                        }, 50)"
+                        :style="`background: linear-gradient(${deg}deg, ${colors.join(', ')})`"
+                        class="lg:w-[325] xl:w-[385px] bg-[#000000] shadow-xl overflow-hidden relative rounded-lg p-1">
+
                         <div class="w-full h-full bg-black rounded-lg">
-                            <!-- Course Cover With Author Info & Details -->
-                            <div class="relative overflow-hidden">
-                                <!-- Course Cover -->
-                                <img class="object-cover w-full aspect-[16/9] rounded-lg"
-                                    src="https://as1.ftcdn.net/v2/jpg/05/40/88/30/1000_F_540883010_iQNEDYQ48PEXiQd9oefyVDcEpWQN9Ahq.jpg"
-                                    alt="Course Cover">
+                            <!-- Course Cover -->
+                            <img class="object-cover w-full aspect-[16/9] rounded-lg" src="https://as1.ftcdn.net/v2/jpg/05/40/88/30/1000_F_540883010_iQNEDYQ48PEXiQd9oefyVDcEpWQN9Ahq.jpg" alt="">
 
-                                <!-- Course Author Info & Details -->
-                                <div
-                                    class="absolute flex items-center justify-between px-3 py-2 w-full -mt-8 bg-gradient-to-t from-black via-black/75 to-transparent text-[0.75rem] md:text-[0.875rem] lg:text-[1rem] xl:text-[1.125rem]">
-                                    <div class="flex items-center gap-2 font-light">
-                                        <i class="text-lg ti ti-user"></i>
-                                        <span>John Doe</span>
-                                    </div>
-                                    <div class="flex items-center gap-1">
-                                        <span>
-                                            <span class="font-semibold">17</span> lessons
-                                        </span>
-                                        •
-                                        <span>
-                                            <span class="font-semibold">3</span> quizzes
-                                        </span>
-                                    </div>
+                            <!-- Course Author Info & Details -->
+                            <div class="absolute flex items-center justify-between px-3 py-2 w-[97.5%] -mt-8 bg-gradient-to-t from-black via-black/75 to-transparent">
+                                <div class="flex items-center gap-2 font-light">
+                                    <i class="text-lg ti ti-user"></i>
+                                    <span class="text-md">John Doe</span>
+                                </div>
+                                <div class="flex items-center gap-1 text-sm">
+                                    <span><span class="font-semibold">17</span> lessons</span> •
+                                    <span><span class="font-semibold">3</span> quizzes</span>
                                 </div>
                             </div>
 
                             <!-- Course Title -->
-                            <h1
-                                class="px-3 mt-4 font-semibold line-clamp-2 text-[0.875rem] md:text-[1rem] lg:text-[1.125rem] xl:text-[1.25rem]">
+                            <h1 class="px-3 mt-4 text-lg font-semibold line-clamp-2">
                                 Belajar Salto Dengan Asep Knalpot Di Telkom University Bersama Pak Dadang
                             </h1>
 
                             <!-- Course Category -->
-                            <div
-                                class="flex flex-wrap gap-2 px-3 mt-3 text-[0.75rem] md:text-[0.875rem] lg:text-[1rem] xl:text-[1.125rem]">
-                                <span class="px-3 py-1 bg-[#222222] rounded-md">Sports</span>
-                                <span class="px-3 py-1 bg-[#222222] rounded-md">Education</span>
-                                <span class="px-3 py-1 bg-[#222222] rounded-md">Education</span>
-                                <span class="px-3 py-1 bg-[#222222] rounded-md">Education</span>
-                                <span class="px-3 py-1 bg-[#222222] rounded-md">6+</span>
+                            <div class="flex flex-wrap gap-2 px-3 mt-3">
+                                <span class="px-3 py-1 text-sm bg-[#222222] rounded-md">Sports</span>
+                                <span class="px-3 py-1 text-sm bg-[#222222] rounded-md">Education</span>
+                                <span class="px-3 py-1 text-sm bg-[#222222] rounded-md">Education</span>
+                                <span class="px-3 py-1 text-sm bg-[#222222] rounded-md">Education</span>
+                                <span class="px-3 py-1 text-sm bg-[#222222] rounded-md">6+</span>
                             </div>
 
                             <!-- Course Detail Button & Exp Reward -->
-                            <div class="flex flex-col items-center justify-between gap-2 px-3 mt-2 mb-3 lg:flex-row">
+                            <div class="flex items-center justify-between px-3 mt-2 mb-3">
                                 <!-- EXP Reward -->
-                                <div
-                                    class="flex items-center gap-1 text-[0.875rem] md:text-[1rem] lg:text-[1.125rem] xl:text-[1.25rem] font-medium">
+                                <div class="flex items-center w-full gap-1 text-lg font-medium">
                                     <i class="ti ti-bolt-filled"></i>
                                     <span>200 EXP</span>
                                 </div>
-                                <!-- Core Reward -->
-                                <div
-                                    class="flex items-center gap-1 text-[0.875rem] md:text-[1rem] lg:text-[1.125rem] xl:text-[1.25rem] font-medium">
+                                <div class="flex items-center w-full gap-1 mr-3 text-lg font-medium">
                                     <i class="ti ti-diamonds-filled"></i>
                                     <span>200 Core</span>
                                 </div>
+
                                 <!-- Button -->
-                                <button
-                                    class="px-4 py-2 text-[0.75rem] md:text-[0.875rem] lg:text-[1rem] xl:text-[1.125rem] font-semibold text-black bg-white rounded-md hover:bg-gray-200">
+                                <button class="px-6 py-2 text-base font-semibold text-black bg-white rounded-md hover:bg-gray-200">
                                     View
                                 </button>
                             </div>
                         </div>
                     </div>
+
+                    @for ($i = 1; $i <= 18; $i++)
+                    {{-- <div
+                        class="lg:w-[325] xl:w-[385px] bg-[#000000] shadow-xl overflow-hidden relative rounded-lg p-1"
+                        style="padding: 3px;">
+
+                        <div class="w-full h-full bg-black rounded-lg">
+                            <!-- Course Cover -->
+                            <img class="object-cover w-full aspect-[16/9] rounded-lg" src="https://as1.ftcdn.net/v2/jpg/05/40/88/30/1000_F_540883010_iQNEDYQ48PEXiQd9oefyVDcEpWQN9Ahq.jpg" alt="">
+
+                            <!-- Course Author Info & Details -->
+                            <div class="absolute flex items-center justify-between px-3 py-2 w-[97.5%] -mt-8 bg-gradient-to-t from-black via-black/75 to-transparent">
+                                <div class="flex items-center gap-2 font-light">
+                                    <i class="text-lg ti ti-user"></i>
+                                    <span class="text-md">John Doe</span>
+                                </div>
+                                <div class="flex items-center gap-1 text-sm">
+                                    <span><span class="font-semibold">17</span> lessons</span> •
+                                    <span><span class="font-semibold">3</span> quizzes</span>
+                                </div>
+                            </div>
+
+                            <!-- Course Title -->
+                            <h1 class="px-3 mt-4 text-lg font-semibold line-clamp-2">
+                                Belajar Salto Dengan Asep Knalpot Di Telkom University Bersama Pak Dadang
+                            </h1>
+
+                            <!-- Course Category -->
+                            <div class="flex flex-wrap gap-2 px-3 mt-3">
+                                <span class="px-3 py-1 text-sm bg-[#222222] rounded-md">Sports</span>
+                                <span class="px-3 py-1 text-sm bg-[#222222] rounded-md">Education</span>
+                                <span class="px-3 py-1 text-sm bg-[#222222] rounded-md">Education</span>
+                                <span class="px-3 py-1 text-sm bg-[#222222] rounded-md">Education</span>
+                                <span class="px-3 py-1 text-sm bg-[#222222] rounded-md">6+</span>
+                            </div>
+
+                            <!-- Course Detail Button & Exp Reward -->
+                            <div class="flex items-center justify-between px-3 mt-2 mb-3">
+                                <!-- EXP Reward -->
+                                <div class="flex items-center w-full gap-1 text-lg font-medium">
+                                    <i class="ti ti-bolt-filled"></i>
+                                    <span>200 EXP</span>
+                                </div>
+                                <div class="flex items-center w-full gap-1 mr-3 text-lg font-medium">
+                                    <i class="ti ti-diamonds-filled"></i>
+                                    <span>200 Core</span>
+                                </div>
+
+                                <!-- Button -->
+                                <button class="px-6 py-2 text-base font-semibold text-black bg-white rounded-md hover:bg-gray-200">
+                                    View
+                                </button>
+                            </div>
+                        </div>
+                    </div> --}}
+
+                    @endfor
+
                 </div>
 
 
