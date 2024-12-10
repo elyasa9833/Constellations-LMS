@@ -106,7 +106,7 @@
             <!-- Menu items Top -->
             <div class="flex flex-col items-center gap-4">
                 <!-- Logo -->
-                <img class="mt-4 h-11 w-11" src="{{ asset('assets/icons/Icon Dark.svg') }}" alt="Logo">
+                <img class="mt-4 h-9 w-9 md:h-11 md:w-11 lg:h-14 lg:w-14" src="{{ asset('assets/icons/Icon Dark.svg') }}" alt="Logo">
                 <!-- Logo -->
                 <!-- Nav Item -->
                 @php
@@ -135,7 +135,7 @@
             <div class="flex items-center justify-center mb-4 rounded-lg group" data-tilt data-tilt-reverse="true"
                 data-tilt-glare="true" data-tilt-max-glare="0.5">
                 <button id="openModal"
-                    class="flex h-11 w-11 items-center justify-center rounded-lg shadow-lg shadow-gray-900/10 backdrop-blur-sm transition group-hover:scale-110  opacity-80 group-hover:bg-gradient-to-tl from-[#ffffff2a] via-[#cccccc50] to-[#ffffff2a] hover:border hover:border-white/20 md:h-14 md:w-14">
+                    class="flex h-9 w-9 md:h-11 md:w-11 lg:h-14 lg:w-14 items-center justify-center rounded-lg shadow-lg shadow-gray-900/10 backdrop-blur-sm transition group-hover:scale-110  opacity-80 group-hover:bg-gradient-to-tl from-[#ffffff2a] via-[#cccccc50] to-[#ffffff2a] hover:border hover:border-white/20">
                     @auth
                         <img src="{{auth()->user()->avatar}}" alt="foto profil" class="rounded-full">
                     @endauth
@@ -152,7 +152,7 @@
         <!-- Side Nav -->
 
         <!-- Main Container -->
-        <div class="flex flex-1 flex-col gap-4 overflow-y-auto bg-[#191919] text-white p-6">
+        <div class="flex flex-1 flex-col bg-[#191919] text-white p-6">
 
             <!-- Header -->
             <x-header title="{{$title}}" />
