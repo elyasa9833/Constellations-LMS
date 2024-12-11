@@ -79,6 +79,14 @@
                 }
             }
         }
+        .no-scrollbar {
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none; /* IE and Edge */
+        }
+
+        .no-scrollbar::-webkit-scrollbar {
+        display: none; /* Chrome, Safari, and Opera */
+        }
     </style>
 </head>
 
@@ -92,7 +100,7 @@
             <img class="w-28 h-28 md:w-40 md:h-40 animate-slow-bounce glow-effect" src="{{ asset('assets/icons/Icon Dark.svg') }}"
                 alt="Logo" />
             <!-- Elegant Loading Text -->
-            <div class="mt-4 text-xl md:text-2xl font-semibold tracking-wide text-white opacity-90 animate-smooth-fade">
+            <div class="mt-4 text-xl font-semibold tracking-wide text-white md:text-2xl opacity-90 animate-smooth-fade">
                 Please wait...
             </div>
         </div>
@@ -159,7 +167,7 @@
             <!-- Header -->
 
             <!-- Main Content -->
-            <div class="flex justify-center max-h-[1080px]" id="layout-container">
+            <div class="flex justify-center max-h-[1080px] h-full" id="layout-container">
                 <!-- Page Content -->
                 {{ $slot }}
                 <!-- Page Content -->
