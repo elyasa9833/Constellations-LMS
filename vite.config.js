@@ -15,11 +15,11 @@ export default defineConfig({
     },
 
     // configure the Vite dev server (Zero Tier IP)
-    server: {
-        host: '0.0.0.0',
-        port: 5173,
-        hmr: {
-            host: '10.144.210.187',
-        }
-    },
+    // server: {
+    //     host: '0.0.0.0',
+    //     port: 5173,
+    //     hmr: {
+    //         host: '10.144.210.187',
+    //     }
+    // },
 });

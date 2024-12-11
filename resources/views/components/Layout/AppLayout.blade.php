@@ -79,22 +79,6 @@
                 }
             }
         }
-
-        @keyframes rotateGradient {
-            0% {
-                /* background: linear-gradient(90deg, #e3ffe7 0%, #d9e7ff 100%); */
-                background: linear-gradient(90deg, #0700b8 0%, #00ff88 100%);
-            }
-
-            100% {
-                /* background: linear-gradient(360deg, #e3ffe7 0%, #d9e7ff 100%); */
-                background: linear-gradient(360deg, #0700b8 0%, #00ff88 100%);
-            }
-        }
-
-        #gradient-box {
-            animation: rotateGradient 15s linear infinite;
-        }
     </style>
 </head>
 
@@ -105,24 +89,24 @@
         class="fixed inset-0 z-10 flex items-center justify-center w-full h-full bg-opacity-50 bg-black/10 backdrop-blur-md loading-layer">
         <div class="flex flex-col items-center justify-center">
             <!-- Logo with subtle glow effect -->
-            <img class="w-40 h-40 animate-slow-bounce glow-effect" src="{{ asset('assets/icons/Icon Dark.svg') }}"
+            <img class="w-28 h-28 md:w-40 md:h-40 animate-slow-bounce glow-effect" src="{{ asset('assets/icons/Icon Dark.svg') }}"
                 alt="Logo" />
             <!-- Elegant Loading Text -->
-            <div class="mt-4 text-2xl font-semibold tracking-wide text-white opacity-90 animate-smooth-fade">
+            <div class="mt-4 text-xl md:text-2xl font-semibold tracking-wide text-white opacity-90 animate-smooth-fade">
                 Please wait...
             </div>
         </div>
     </div>
 
     <!-- Scafold -->
-    <div id="content" class="fixed flex w-full h-screen load-container">
+    <div id="content" class="fixed flex w-full h-full load-container">
 
         <!-- Side Nav -->
         <div class="top-0 bottom-0 flex flex-col justify-between px-2 bg-black max-w-fit md:px-3">
             <!-- Menu items Top -->
             <div class="flex flex-col items-center gap-4">
                 <!-- Logo -->
-                <img class="mt-4 h-11 w-11" src="{{ asset('assets/icons/Icon Dark.svg') }}" alt="Logo">
+                <img class="mt-4 h-9 w-9 md:h-11 md:w-11 lg:h-14 lg:w-14" src="{{ asset('assets/icons/Icon Dark.svg') }}" alt="Logo">
                 <!-- Logo -->
                 <!-- Nav Item -->
                 @php
@@ -151,7 +135,7 @@
             <div class="flex items-center justify-center mb-4 rounded-lg group" data-tilt data-tilt-reverse="true"
                 data-tilt-glare="true" data-tilt-max-glare="0.5">
                 <button id="openModal"
-                    class="flex h-11 w-11 items-center justify-center rounded-lg shadow-lg shadow-gray-900/10 backdrop-blur-sm transition group-hover:scale-110  opacity-80 group-hover:bg-gradient-to-tl from-[#ffffff2a] via-[#cccccc50] to-[#ffffff2a] hover:border hover:border-white/20 md:h-14 md:w-14">
+                    class="flex h-9 w-9 md:h-11 md:w-11 lg:h-14 lg:w-14 items-center justify-center rounded-lg shadow-lg shadow-gray-900/10 backdrop-blur-sm transition group-hover:scale-110  opacity-80 group-hover:bg-gradient-to-tl from-[#ffffff2a] via-[#cccccc50] to-[#ffffff2a] hover:border hover:border-white/20">
                     @auth
                         <img src="{{auth()->user()->avatar}}" alt="foto profil" class="rounded-full">
                     @endauth
@@ -168,7 +152,7 @@
         <!-- Side Nav -->
 
         <!-- Main Container -->
-        <div class="flex flex-1 flex-col gap-4 overflow-y-auto bg-[#191919] text-white p-6">
+        <div class="flex flex-1 flex-col bg-[#191919] text-white p-6">
 
             <!-- Header -->
             <x-header title="{{$title}}" />
