@@ -7,22 +7,22 @@
                 <div class="flex border-b-2 border-[#8c8c8c]">
                     <button @click="activeTab = 'home'"
                         :class="{'border-b-4 text-[#ffffff] border-white text-whtborder-white': activeTab === 'home'}"
-                        class="px-4 py-2 text-[#8c8c8c] hover:text-whtborder-white focus:outline-none -mb-[2px]">
+                        class="px-4 py-2 text-[#8c8c8c] hover:text-white/80 focus:outline-none -mb-[2px]">
                         Home
                     </button>
                     <button @click="activeTab = 'recent'"
                         :class="{'border-b-4 text-[#ffffff] border-white text-whtborder-white': activeTab === 'recent'}"
-                        class="px-4 py-2 text-[#8c8c8c] hover:text-whtborder-white focus:outline-none -mb-[2px]">
+                        class="px-4 py-2 text-[#8c8c8c] hover:text-white/80 focus:outline-none -mb-[2px]">
                         Recent Course
                     </button>
                     <button @click="activeTab = 'favorite'"
                         :class="{'border-b-4 text-[#ffffff] border-white text-whtborder-white': activeTab === 'favorite'}"
-                        class="px-4 py-2 text-[#8c8c8c] hover:text-whtborder-white focus:outline-none -mb-[2px]">
+                        class="px-4 py-2 text-[#8c8c8c] hover:text-white/80 focus:outline-none -mb-[2px]">
                         Favorite
                     </button>
                     <button @click="activeTab = 'project'"
                         :class="{'border-b-4 text-[#ffffff] border-white text-whtborder-white': activeTab === 'project'}"
-                        class="px-4 py-2 text-[#8c8c8c] hover:text-whtborder-white focus:outline-none -mb-[2px]">
+                        class="px-4 py-2 text-[#8c8c8c] hover:text-white/80 focus:outline-none -mb-[2px]">
                         My Project
                     </button>
                 </div>
