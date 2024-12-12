@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\User;
 use App\Models\CourseCategory;
+use App\Enums\CourseStatusEnum;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -26,6 +27,7 @@ class CourseFactory extends Factory
             'name' => fake()->sentence(),
             'description' => fake()->paragraph(),
             'total_experience' => fake()->numberBetween(100, 1000),
+            'status' => CourseStatusEnum::Live->value,
         ];
     }
 }

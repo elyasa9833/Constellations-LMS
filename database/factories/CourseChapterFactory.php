@@ -21,6 +21,7 @@ class CourseChapterFactory extends Factory
         return [
             'course_id' => $courseId ?? Course::factory(),
             'title' => fake()->sentence(),
+            'data' => fake()->paragraphs(5, true),
         ];
     }
 }
