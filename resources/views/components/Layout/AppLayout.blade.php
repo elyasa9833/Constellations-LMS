@@ -79,14 +79,7 @@
                 }
             }
         }
-        .no-scrollbar {
-        scrollbar-width: none; /* Firefox */
-        -ms-overflow-style: none; /* IE and Edge */
-        }
 
-        .no-scrollbar::-webkit-scrollbar {
-        display: none; /* Chrome, Safari, and Opera */
-        }
     </style>
 </head>
 
@@ -160,7 +153,7 @@
         <!-- Side Nav -->
 
         <!-- Main Container -->
-        <div class="flex flex-1 flex-col bg-[#191919] text-white p-6">
+        <div class="flex flex-1 flex-col bg-[#191919] text-white px-4 pt-4">
 
             <!-- Header -->
             <x-header title="{{$title}}" />
