@@ -101,10 +101,7 @@ class CourseController extends Controller
 
         $course = Course::find($course->id);
         $course->update($validate);
-        return response()->json([
-            'data' => $course,
-            'message' => 'Course updated successfully'
-        ]);
+        return redirect()->back();
     }
 
     /**
@@ -114,8 +111,6 @@ class CourseController extends Controller
     {
         $course = Course::find($course->id);
         $course->delete();
-        return response()->json([
-            'message' => 'Course deleted successfully'
-        ]);
+        return redirect()->route('course.index');
     }
 }
