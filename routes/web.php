@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CourseController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\GoogleAuthController;
 
 // Route::get('/', function () {
@@ -34,15 +36,16 @@ Route::group(['middleware' => ['auth']], function () {
 
     /* Route Group For Dashboard*/
     Route::prefix('dashboard')->name('dashboard.')->group(function () {
-        // Route::get('/', [DashboardController::class, 'index'])->name('index');
-        Route::get('/',  function(){return view('pages.dashboard.view');});
+        Route::get('/', [DashboardController::class, 'index'])->name('index');
     });
 
     /* Route Group For Course*/
     Route::prefix('course')->name('course.')->group(function () {
-        Route::get('/chapter',  function(){return view('pages.course_chapter.view');});
-        Route::get('/',  function(){return view('pages.course.view');});
-        // Route::get('/', [CourseController::class, 'index'])->name('index');
+        Route::get('/', [CourseController::class, 'index'])->name('index');
+        Route::post('/store', [CourseController::class, 'store'])->name('store');
+        Route::get('/{course}/chapter', [CourseController::class, 'show'])->name('show');
+        Route::put('/{course}', [CourseController::class, 'update'])->name('update');
+        Route::delete('/{course}/delete', [CourseController::class, 'destroy'])->name('destroy');
     });
 
     /* Route Group For template*/

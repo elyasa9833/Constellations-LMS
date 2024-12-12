@@ -74,4 +74,12 @@ return [
         public_path('storage') => storage_path('app/public'),
     ],
 
+    'directory' => [
+        'course' => [
+            'banner' => 'images/course_banner',
+            'cover' => 'images/course_cover',
+
+        ],
+    ],
+
 ];
