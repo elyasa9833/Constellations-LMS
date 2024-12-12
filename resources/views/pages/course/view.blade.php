@@ -1,109 +1,100 @@
-{{-- <x-app-layout title="course">
-
-</x-app-layout> --}}
 <x-app-layout title="course">
-    <div class="container min-w-full">
-        <!-- Tabs -->
-        <div x-data="{ activeTab: 'home' }" class="flex flex-col gap-4">
-            <div class="flex space-x-4 border-b-2 border-[#8c8c8c]">
+    <div x-data="{ activeTab: 'home' }" class="w-full max-w-[1700px]">
+        <div class="h-full pt-4 overflow-hidden">
+            <!--Tabs-->
+            <div class="flex flex-col w-full gap-2 mb-2">
                 <!-- Tab Items -->
-                <button @click="activeTab = 'home'"
-                    :class="{'border-b-4 text-[#ffffff] border-white text-whtborder-white': activeTab === 'home'}"
-                    class="px-4 py-2 text-[#8c8c8c] hover:text-whtborder-white focus:outline-none -mb-[2px]">
-                    Home
-                </button>
-                <button @click="activeTab = 'recent'"
-                    :class="{'border-b-4 text-[#ffffff] border-white text-whtborder-white': activeTab === 'recent'}"
-                    class="px-4 py-2 text-[#8c8c8c] hover:text-whtborder-white focus:outline-none -mb-[2px]">
-                    Recent Course
-                </button>
-                <button @click="activeTab = 'favorite'"
-                    :class="{'border-b-4 text-[#ffffff] border-white text-whtborder-white': activeTab === 'favorite'}"
-                    class="px-4 py-2 text-[#8c8c8c] hover:text-whtborder-white focus:outline-none -mb-[2px]">
-                    Favorite
-                </button>
-                <button @click="activeTab = 'project'"
-                    :class="{'border-b-4 text-[#ffffff] border-white text-whtborder-white': activeTab === 'project'}"
-                    class="px-4 py-2 text-[#8c8c8c] hover:text-whtborder-white focus:outline-none -mb-[2px]">
-                    My Project
-                </button>
-            </div>
-
-            <!-- Filter and Shortby -->
-            <div class="flex items-center justify-between gap-6">
-                <!-- Filter -->
-                <div class="flex items-center flex-grow gap-6 overflow-hidden whitespace-nowrap">
-                    <!-- Filter Button -->
-                    <button class="flex items-center justify-center space-x-2">
-                        <i class="text-xl text-white transition ti ti-filter-plus"></i>
-                        <span class="text-white text-md">Add Category</span>
+                <div class="flex border-b-2 border-[#8c8c8c]">
+                    <button @click="activeTab = 'home'"
+                        :class="{'border-b-4 text-[#ffffff] border-white text-whtborder-white': activeTab === 'home'}"
+                        class="px-4 py-2 text-[#8c8c8c] hover:text-white/80 focus:outline-none -mb-[2px]">
+                        Home
                     </button>
-                    <!-- Filter Button -->
-
-                    <!-- Reset Category -->
-                    <button class="flex items-center justify-center">
-                        <span class="text-white text-md">Reset</span>
+                    <button @click="activeTab = 'recent'"
+                        :class="{'border-b-4 text-[#ffffff] border-white text-whtborder-white': activeTab === 'recent'}"
+                        class="px-4 py-2 text-[#8c8c8c] hover:text-white/80 focus:outline-none -mb-[2px]">
+                        Recent Course
                     </button>
-                    <!-- Reset Category -->
+                    <button @click="activeTab = 'favorite'"
+                        :class="{'border-b-4 text-[#ffffff] border-white text-whtborder-white': activeTab === 'favorite'}"
+                        class="px-4 py-2 text-[#8c8c8c] hover:text-white/80 focus:outline-none -mb-[2px]">
+                        Favorite
+                    </button>
+                    <button @click="activeTab = 'project'"
+                        :class="{'border-b-4 text-[#ffffff] border-white text-whtborder-white': activeTab === 'project'}"
+                        class="px-4 py-2 text-[#8c8c8c] hover:text-white/80 focus:outline-none -mb-[2px]">
+                        My Project
+                    </button>
+                </div>
+                <!-- Tab Items -->
 
-                    <!-- Category Filter List -->
-                    <div class="flex items-center gap-3 -mb-3 overflow-x-scroll whitespace-nowrap">
-                        <div class="flex items-center justify-between gap-2 px-2 border border-white rounded-[0.25rem]">
-                            <span class="text-sm text-white">Dummy Category</span>
-                            <button class="text-sm text-white hover:text-red-500">
-                                <i class="ti ti-x"></i>
-                            </button>
-                        </div>
-
-                        @for ($i = 1; $i <= 18; $i++) <div
-                            class="flex items-center justify-between gap-2 px-2 border border-white rounded-[0.25rem]">
-                            <span class="text-sm text-white">Category {{$i}}</span>
-                            <button class="text-sm text-white hover:text-red-500">
-                                <i class="ti ti-x"></i>
-                            </button>
+                <!-- Filter and Shortby -->
+                <div class="relative flex w-full gap-2 w-max-full whitespace-nowrap">
+                    <!--Button Left-->
+                    <div class="flex flex-none gap-2">
+                        <button class="flex items-center justify-center space-x-2">
+                            <i class="text-xl text-white transition ti ti-filter-plus"></i>
+                            <span class="text-white text-md">Add Category</span>
+                        </button>
+                        <button class="flex items-center justify-center">
+                            <span class="text-white text-md">Reset</span>
+                        </button>
                     </div>
-                    @endfor
+                    <!--Category Slider-->
+                    <div class="flex-1 pt-2 overflow-hidden">
+                        <div class="flex w-full gap-4 overflow-x-auto no-scrollbar">
+                            @for ($i = 1; $i <= 18; $i++)
+                            <div class="flex items-center justify-between gap-2 px-2 border border-white rounded-[0.25rem]">
+                                <span class="text-sm text-white">Category {{$i}}</span>
+                                <button class="text-sm text-white hover:text-red-500">
+                                    <i class="ti ti-x"></i>
+                                </button>
+                            </div>
+                            @endfor
+                        </div>
+                    </div>
+                    <!--Orderby-->
+                    <div class="flex-none pt-1">
+                        <div class="flex items-center justify-between gap-2 px-2 border border-white rounded-sm">
+                            <button class="text-lg text-white">
+                                <i class="ti ti-sort-descending"></i>
+                            </button>
+                            <span class="text-lg text-white">Popular</span>
+                        </div>
+                    </div>
+
                 </div>
-                <!-- Category Filter List -->
+                <!-- Filter and Shortby -->
+
             </div>
-            <!-- Filter -->
+            <!--Tabs-->
 
-            <!-- Shortby -->
-            <div class="flex items-center">
-                <div class="flex items-center justify-between gap-2 px-2 border border-white rounded-sm">
-                    <button class="text-lg text-white">
-                        <i class="ti ti-sort-descending"></i>
-                    </button>
-                    <span class="text-lg text-white">Popular</span>
-                </div>
-            </div>
-            <!-- Shortby -->
-        </div>
-        <!-- Filter and Shortby -->
+            <!--Content-->
+            <div class="h-full">
+                <div x-show="activeTab === 'home'" class="h-full pt-4 overflow-y-auto pb-[7%]">
+                    <div class="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 justify-items-center">
+                        @for ($i = 0; $i < 10; $i++)
+                        <!--Moving Gradient Card Alpine Array-->
+                        <div x-data="{
+                                deg: 0,
+                                direction: 1,
+                                colors: ['#FC466B', '#3F5EFB'], // Array warna gradien
+                            }"
+                            x-init="setInterval(() => {
+                                deg += direction * 5.1;
+                                if (deg >= 720 || deg <= 0) {
+                                    direction *= -1;  // Membalik arah putaran
+                                }
+                            }, 50)"
+                            :style="`background: linear-gradient(${deg}deg, ${colors.join(', ')})`"
+                            class="lg:w-[325] xl:w-[385px] bg-[#000000] shadow-xl overflow-hidden relative rounded-lg p-1 z-10">
 
-        <!-- Tab Content -->
-        <div class="">
-            <!-- Home Tab -->
-            {{-- <div x-show="activeTab === 'home'" class="flex flex-wrap gap-4 justify-normal align-content-center">
-                --}}
-                {{-- <div x-show="activeTab === 'home'"
-                    class="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 justify-items-center">
-                    <!-- Course List -->
-
-                    <!--Static Gradient Card-->
-                    <div class="w-[150px] md:w-[200px] lg:w-[275px] xl:w-[325px] bg-[#000000] shadow-xl overflow-hidden relative rounded-lg"
-                        style="background: linear-gradient(90deg, #e3ffe7 0%, #d9e7ff 100%); padding: 3px;">
-                        <!-- Inner Card -->
-                        <div class="w-full h-full bg-black rounded-lg">
-                            <!-- Course Cover With Author Info & Details-->
-                            <div>
+                            <div class="w-full h-full bg-black rounded-lg">
                                 <!-- Course Cover -->
-                                <img class="object-cover w-full aspect-[16/9] rounded-lg"
-                                    src="https://as1.ftcdn.net/v2/jpg/05/40/88/30/1000_F_540883010_iQNEDYQ48PEXiQd9oefyVDcEpWQN9Ahq.jpg"
-                                    alt="">
+                                <img class="object-cover w-full aspect-[16/9] rounded-lg" src="https://as1.ftcdn.net/v2/jpg/05/40/88/30/1000_F_540883010_iQNEDYQ48PEXiQd9oefyVDcEpWQN9Ahq.jpg" alt="">
+
                                 <!-- Course Author Info & Details -->
-                                <div
-                                    class="absolute flex items-center justify-between px-3 py-2 w-[98%] -mt-8 bg-gradient-to-t from-black via-black/75 to-transparent">
+                                <div class="absolute flex items-center justify-between px-3 py-2 w-[97.5%] -mt-8 bg-gradient-to-t from-black via-black/75 to-transparent">
                                     <div class="flex items-center gap-2 font-light">
                                         <i class="text-lg ti ti-user"></i>
                                         <span class="text-md">John Doe</span>
@@ -113,226 +104,43 @@
                                         <span><span class="font-semibold">3</span> quizzes</span>
                                     </div>
                                 </div>
-                            </div>
 
-                            <!-- Course Title -->
-                            <h1 class="px-3 mt-4 text-lg font-semibold line-clamp-2">
-                                Belajar Salto Dengan Asep Knalpot Di Telkom University Bersama Pak Dadang
-                            </h1>
+                                <!-- Course Title -->
+                                <h1 class="px-3 mt-4 text-lg font-semibold line-clamp-2">
+                                    Belajar Salto Dengan Asep Knalpot Di Telkom University Bersama Pak Dadang
+                                </h1>
 
-                            <!-- Course Category -->
-                            <div class="flex flex-wrap gap-2 px-3 mt-3">
-                                <span class="px-3 py-1 text-sm bg-[#222222] rounded-md">Sports</span>
-                                <span class="px-3 py-1 text-sm bg-[#222222] rounded-md">Education</span>
-                                <span class="px-3 py-1 text-sm bg-[#222222] rounded-md">Education</span>
-                                <span class="px-3 py-1 text-sm bg-[#222222] rounded-md">Education</span>
-                                <span class="px-3 py-1 text-sm bg-[#222222] rounded-md">6+</span>
-                            </div>
-
-                            <!-- Course Detail Button & Exp Reward -->
-                            <div class="flex items-center justify-between px-3 mt-2 mb-3">
-                                <!-- EXP Reward -->
-                                <div class="flex items-center w-full gap-1 text-lg font-medium">
-                                    <i class="ti ti-bolt-filled"></i>
-                                    <span>200 EXP</span>
-                                </div>
-                                <div class="flex items-center w-full gap-1 mr-3 text-lg font-medium">
-                                    <i class="ti ti-diamonds-filled"></i>
-                                    <span>200 Core</span>
+                                <!-- Course Category -->
+                                <div class="flex flex-wrap gap-2 px-3 mt-3">
+                                    <span class="px-3 py-1 text-sm bg-[#222222] rounded-md">Sports</span>
+                                    <span class="px-3 py-1 text-sm bg-[#222222] rounded-md">Education</span>
+                                    <span class="px-3 py-1 text-sm bg-[#222222] rounded-md">Education</span>
+                                    <span class="px-3 py-1 text-sm bg-[#222222] rounded-md">Education</span>
+                                    <span class="px-3 py-1 text-sm bg-[#222222] rounded-md">6+</span>
                                 </div>
 
-                                <!-- Button -->
-                                <button
-                                    class="px-6 py-2 text-base font-semibold text-black bg-white rounded-md hover:bg-gray-200">
-                                    View
-                                </button>
+                                <!-- Course Detail Button & Exp Reward -->
+                                <div class="flex items-center justify-between px-3 mt-2 mb-3">
+                                    <!-- EXP Reward -->
+                                    <div class="flex items-center w-full gap-1 text-lg font-medium">
+                                        <i class="ti ti-bolt-filled"></i>
+                                        <span>200 EXP</span>
+                                    </div>
+                                    <div class="flex items-center w-full gap-1 mr-3 text-lg font-medium">
+                                        <i class="ti ti-diamonds-filled"></i>
+                                        <span>200 Core</span>
+                                    </div>
+
+                                    <!-- Button -->
+                                    <button onclick="window.location.href='/course/chapter'" class="px-6 py-2 text-base font-semibold text-black bg-white rounded-md hover:bg-gray-200">
+                                        View
+                                    </button>
+                                </div>
                             </div>
                         </div>
+                        @endfor
                     </div>
-
-                    <!--Normal Card-->
-                    <div
-                        class="w-[325px] bg-[#000000] rounded-lg border border-black shadow-xl overflow-hidden relative">
-                        <!-- Course Cover -->
-                        <img class="object-cover w-full aspect-[16/9] rounded-b-lg"
-                            src="https://th.bing.com/th/id/OIP.xsnFrRYV0tv76TnmMmTZigHaEK?rs=1&pid=ImgDetMain" alt="">
-
-                        <!-- Course Author Info & Details -->
-                        <div
-                            class="absolute flex items-center justify-between w-full px-3 py-2 -mt-8 bg-gradient-to-t from-black via-black/75 to-transparent">
-                            <div class="flex items-center gap-2 font-light">
-                                <i class="text-lg ti ti-user"></i>
-                                <span class="text-md">John Doe</span>
-                            </div>
-                            <div class="flex items-center gap-1 text-sm">
-                                <span><span class="font-semibold">17</span> lessons</span> •
-                                <span><span class="font-semibold">3</span> quizzes</span>
-                            </div>
-                        </div>
-
-                        <!-- Course Title -->
-                        <h1 class="px-3 mt-4 text-lg font-semibold line-clamp-2">
-                            Belajar Salto Dengan Asep Knalpot Di Telkom University Bersama Pak Dadang
-                        </h1>
-
-                        <!-- Course Category -->
-                        <div class="flex flex-wrap gap-2 px-3 mt-3">
-                            <span class="px-3 py-1 text-sm bg-[#222222] rounded-md">Sports</span>
-                            <span class="px-3 py-1 text-sm bg-[#222222] rounded-md">Education</span>
-                            <span class="px-3 py-1 text-sm bg-[#222222] rounded-md">Education</span>
-                            <span class="px-3 py-1 text-sm bg-[#222222] rounded-md">Education</span>
-                            <span class="px-3 py-1 text-sm bg-[#222222] rounded-md">6+</span>
-                        </div>
-
-                        <!-- Course Detail Button & Exp Reward -->
-                        <div class="flex items-center justify-between px-3 mt-2 mb-3">
-                            <!-- EXP Reward -->
-                            <div class="flex items-center w-full gap-1 text-lg font-medium">
-                                <i class="ti ti-bolt-filled"></i>
-                                <span>200 EXP</span>
-                            </div>
-
-                            <!-- Button -->
-                            <button
-                                class="px-6 py-2 text-base font-semibold text-black bg-white rounded-md hover:bg-gray-200">
-                                View
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- Course List -->
-
-                </div> --}}
-
-                <div x-show="activeTab === 'home'"
-                class="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 justify-items-center overflow-y-scroll">
-
-
-
-                    <!--Moving Gradient Card Alpine Array-->
-                    <div x-data="{
-                            deg: 0,
-                            direction: 1,
-                            colors: ['#FC466B', '#3F5EFB'], // Array warna gradien
-                        }"
-                        x-init="setInterval(() => {
-                            deg += direction * 5.1;
-                            if (deg >= 720 || deg <= 0) {
-                                direction *= -1;  // Membalik arah putaran
-                            }
-                        }, 50)"
-                        :style="`background: linear-gradient(${deg}deg, ${colors.join(', ')})`"
-                        class="lg:w-[325] xl:w-[385px] bg-[#000000] shadow-xl overflow-hidden relative rounded-lg p-1">
-
-                        <div class="w-full h-full bg-black rounded-lg">
-                            <!-- Course Cover -->
-                            <img class="object-cover w-full aspect-[16/9] rounded-lg" src="https://as1.ftcdn.net/v2/jpg/05/40/88/30/1000_F_540883010_iQNEDYQ48PEXiQd9oefyVDcEpWQN9Ahq.jpg" alt="">
-
-                            <!-- Course Author Info & Details -->
-                            <div class="absolute flex items-center justify-between px-3 py-2 w-[97.5%] -mt-8 bg-gradient-to-t from-black via-black/75 to-transparent">
-                                <div class="flex items-center gap-2 font-light">
-                                    <i class="text-lg ti ti-user"></i>
-                                    <span class="text-md">John Doe</span>
-                                </div>
-                                <div class="flex items-center gap-1 text-sm">
-                                    <span><span class="font-semibold">17</span> lessons</span> •
-                                    <span><span class="font-semibold">3</span> quizzes</span>
-                                </div>
-                            </div>
-
-                            <!-- Course Title -->
-                            <h1 class="px-3 mt-4 text-lg font-semibold line-clamp-2">
-                                Belajar Salto Dengan Asep Knalpot Di Telkom University Bersama Pak Dadang
-                            </h1>
-
-                            <!-- Course Category -->
-                            <div class="flex flex-wrap gap-2 px-3 mt-3">
-                                <span class="px-3 py-1 text-sm bg-[#222222] rounded-md">Sports</span>
-                                <span class="px-3 py-1 text-sm bg-[#222222] rounded-md">Education</span>
-                                <span class="px-3 py-1 text-sm bg-[#222222] rounded-md">Education</span>
-                                <span class="px-3 py-1 text-sm bg-[#222222] rounded-md">Education</span>
-                                <span class="px-3 py-1 text-sm bg-[#222222] rounded-md">6+</span>
-                            </div>
-
-                            <!-- Course Detail Button & Exp Reward -->
-                            <div class="flex items-center justify-between px-3 mt-2 mb-3">
-                                <!-- EXP Reward -->
-                                <div class="flex items-center w-full gap-1 text-lg font-medium">
-                                    <i class="ti ti-bolt-filled"></i>
-                                    <span>200 EXP</span>
-                                </div>
-                                <div class="flex items-center w-full gap-1 mr-3 text-lg font-medium">
-                                    <i class="ti ti-diamonds-filled"></i>
-                                    <span>200 Core</span>
-                                </div>
-
-                                <!-- Button -->
-                                <button class="px-6 py-2 text-base font-semibold text-black bg-white rounded-md hover:bg-gray-200">
-                                    View
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-
-                    @for ($i = 1; $i <= 18; $i++)
-                    {{-- <div
-                        class="lg:w-[325] xl:w-[385px] bg-[#000000] shadow-xl overflow-hidden relative rounded-lg p-1"
-                        style="padding: 3px;">
-
-                        <div class="w-full h-full bg-black rounded-lg">
-                            <!-- Course Cover -->
-                            <img class="object-cover w-full aspect-[16/9] rounded-lg" src="https://as1.ftcdn.net/v2/jpg/05/40/88/30/1000_F_540883010_iQNEDYQ48PEXiQd9oefyVDcEpWQN9Ahq.jpg" alt="">
-
-                            <!-- Course Author Info & Details -->
-                            <div class="absolute flex items-center justify-between px-3 py-2 w-[97.5%] -mt-8 bg-gradient-to-t from-black via-black/75 to-transparent">
-                                <div class="flex items-center gap-2 font-light">
-                                    <i class="text-lg ti ti-user"></i>
-                                    <span class="text-md">John Doe</span>
-                                </div>
-                                <div class="flex items-center gap-1 text-sm">
-                                    <span><span class="font-semibold">17</span> lessons</span> •
-                                    <span><span class="font-semibold">3</span> quizzes</span>
-                                </div>
-                            </div>
-
-                            <!-- Course Title -->
-                            <h1 class="px-3 mt-4 text-lg font-semibold line-clamp-2">
-                                Belajar Salto Dengan Asep Knalpot Di Telkom University Bersama Pak Dadang
-                            </h1>
-
-                            <!-- Course Category -->
-                            <div class="flex flex-wrap gap-2 px-3 mt-3">
-                                <span class="px-3 py-1 text-sm bg-[#222222] rounded-md">Sports</span>
-                                <span class="px-3 py-1 text-sm bg-[#222222] rounded-md">Education</span>
-                                <span class="px-3 py-1 text-sm bg-[#222222] rounded-md">Education</span>
-                                <span class="px-3 py-1 text-sm bg-[#222222] rounded-md">Education</span>
-                                <span class="px-3 py-1 text-sm bg-[#222222] rounded-md">6+</span>
-                            </div>
-
-                            <!-- Course Detail Button & Exp Reward -->
-                            <div class="flex items-center justify-between px-3 mt-2 mb-3">
-                                <!-- EXP Reward -->
-                                <div class="flex items-center w-full gap-1 text-lg font-medium">
-                                    <i class="ti ti-bolt-filled"></i>
-                                    <span>200 EXP</span>
-                                </div>
-                                <div class="flex items-center w-full gap-1 mr-3 text-lg font-medium">
-                                    <i class="ti ti-diamonds-filled"></i>
-                                    <span>200 Core</span>
-                                </div>
-
-                                <!-- Button -->
-                                <button class="px-6 py-2 text-base font-semibold text-black bg-white rounded-md hover:bg-gray-200">
-                                    View
-                                </button>
-                            </div>
-                        </div>
-                    </div> --}}
-
-                    @endfor
-
                 </div>
-
 
                 <!-- Recent Course Tab -->
                 <div x-show="activeTab === 'recent'" class="p-4 border rounded bg-gray-50">
@@ -352,6 +160,7 @@
                     <p>Manage your personal projects here.</p>
                 </div>
             </div>
+            <!--Content-->
 
         </div>
     </div>
