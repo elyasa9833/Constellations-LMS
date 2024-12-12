@@ -73,7 +73,7 @@
             <div class="h-full">
                 <div x-show="activeTab === 'home'" class="h-full pt-4 overflow-y-auto pb-[7%]">
                     <div class="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 justify-items-center">
-                        @for ($i = 0; $i < 10; $i++)
+                        @foreach ($courses as $course)
                         <!--Moving Gradient Card Alpine Array-->
                         <div x-data="{
                                 deg: 0,
@@ -91,32 +91,28 @@
 
                             <div class="w-full h-full bg-black rounded-lg">
                                 <!-- Course Cover -->
-                                <img class="object-cover w-full aspect-[16/9] rounded-lg" src="https://as1.ftcdn.net/v2/jpg/05/40/88/30/1000_F_540883010_iQNEDYQ48PEXiQd9oefyVDcEpWQN9Ahq.jpg" alt="">
+                                <img class="object-cover w-full aspect-[16/9] rounded-lg" src="{{$course->banner ?? 'https://as1.ftcdn.net/v2/jpg/05/40/88/30/1000_F_540883010_iQNEDYQ48PEXiQd9oefyVDcEpWQN9Ahq.jpg'}}" alt="">
 
                                 <!-- Course Author Info & Details -->
                                 <div class="absolute flex items-center justify-between px-3 py-2 w-[97.5%] -mt-8 bg-gradient-to-t from-black via-black/75 to-transparent">
                                     <div class="flex items-center gap-2 font-light">
                                         <i class="text-lg ti ti-user"></i>
-                                        <span class="text-md">John Doe</span>
+                                        <span class="text-md">{{$course->creator->nickname}}</span>
                                     </div>
                                     <div class="flex items-center gap-1 text-sm">
-                                        <span><span class="font-semibold">17</span> lessons</span> •
+                                        <span><span class="font-semibold">{{$course->total_chapter}}</span> lessons</span> •
                                         <span><span class="font-semibold">3</span> quizzes</span>
                                     </div>
                                 </div>
 
                                 <!-- Course Title -->
                                 <h1 class="px-3 mt-4 text-lg font-semibold line-clamp-2">
-                                    Belajar Salto Dengan Asep Knalpot Di Telkom University Bersama Pak Dadang
+                                    {{$course->name}}
                                 </h1>
 
                                 <!-- Course Category -->
                                 <div class="flex flex-wrap gap-2 px-3 mt-3">
-                                    <span class="px-3 py-1 text-sm bg-[#222222] rounded-md">Sports</span>
-                                    <span class="px-3 py-1 text-sm bg-[#222222] rounded-md">Education</span>
-                                    <span class="px-3 py-1 text-sm bg-[#222222] rounded-md">Education</span>
-                                    <span class="px-3 py-1 text-sm bg-[#222222] rounded-md">Education</span>
-                                    <span class="px-3 py-1 text-sm bg-[#222222] rounded-md">6+</span>
+                                    <span class="px-3 py-1 text-sm bg-[#222222] rounded-md">{{ $course->category->name }}</span>
                                 </div>
 
                                 <!-- Course Detail Button & Exp Reward -->
@@ -124,7 +120,7 @@
                                     <!-- EXP Reward -->
                                     <div class="flex items-center w-full gap-1 text-lg font-medium">
                                         <i class="ti ti-bolt-filled"></i>
-                                        <span>200 EXP</span>
+                                        <span>{{$course->total_experience}} EXP</span>
                                     </div>
                                     <div class="flex items-center w-full gap-1 mr-3 text-lg font-medium">
                                         <i class="ti ti-diamonds-filled"></i>
@@ -132,13 +128,13 @@
                                     </div>
 
                                     <!-- Button -->
-                                    <button onclick="window.location.href='/course/chapter'" class="px-6 py-2 text-base font-semibold text-black bg-white rounded-md hover:bg-gray-200">
+                                    <button onclick="window.location.href='/course/{{ $course->id }}/chapter'" class="px-6 py-2 text-base font-semibold text-black bg-white rounded-md hover:bg-gray-200">
                                         View
                                     </button>
                                 </div>
                             </div>
                         </div>
-                        @endfor
+                        @endforeach
                     </div>
                 </div>
 

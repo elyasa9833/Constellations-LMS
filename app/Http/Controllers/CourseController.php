@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Course;
 use Illuminate\Http\Request;
 use App\Enums\CourseStatusEnum;
+use App\Models\CourseChapter;
+use Illuminate\Support\Facades\Storage;
 
 class CourseController extends Controller
 {
@@ -13,16 +15,15 @@ class CourseController extends Controller
      */
     public function index()
     {
-        // creator_id ganti menjadi creator->name, category_id ganti menjadi category->name
-        // hide creator_id, category_id
-        $courses = Course::select('id', 'creator_id', 'category_id', 'name', 'description', 'banner', 'cover', 'total_experience', 'status')
-            ->with(['creator:id,nickname', 'category:id,name', 'chapters'])
+        $courses = Course::select('id','creator_id', 'category_id', 'name', 'description', 'banner', 'cover', 'total_experience', 'status')
+            ->with(['creator:id,nickname', 'category:id,name'])
+            ->where('status', CourseStatusEnum::Live->value)
             ->get();
 
-        // hitung jumlah chapter
         $courses->map(function ($course) {
             $course->total_chapter = $course->chapters->count();
-            unset($course->chapters);
+            $course->banner = $course->banner ? Storage::disk('public')->url(config('filesystems.directory.course.banner') . '/' . $course->banner) : null;
+            $course->cover = $course->cover ? Storage::disk('public')->url(config('filesystems.directory.course.cover') . '/' . $course->cover) : null;
             return $course;
         });
         return view('pages.course.view', compact('courses'));
@@ -49,7 +50,7 @@ class CourseController extends Controller
             'banner' => 'nullable',
             'cover' => 'nullable',
             'total_experience' => 'required',
-            'status' => 'required', 'in:' . implode(',', CourseStatusEnum::values()),
+            'status' => 'required|in:' . implode(',', CourseStatusEnum::values()),
         ]);
 
         $course = Course::create($validate);
@@ -64,10 +65,17 @@ class CourseController extends Controller
      */
     public function show(Course $course)
     {
-        $course = Course::find($course->id);
-        return response()->json([
-            'data' => $course
-        ]);
+        $chapters = CourseChapter::select('id', 'course_id', 'title', 'data')
+            ->where('course_id', $course->id)
+            ->get();
+
+        $course = Course::select('id', 'name', 'description', 'banner')
+            ->where('id', $course->id)
+            ->first();
+
+        $course->banner = $course->banner ? Storage::disk('public')->url(config('filesystems.directory.course.banner') . '/' . $course->banner) : null;
+
+        return view('pages.course_chapter.view', compact('chapters'));
     }
 
     /**
