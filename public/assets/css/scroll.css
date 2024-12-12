@@ -52,3 +52,15 @@
         transform: scale(1.2);
     }
 
+    .no-scrollbar {
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none; /* IE and Edge */
+    }
+
+    .no-scrollbar::-webkit-scrollbar {
+        display: none; /* Chrome, Safari, and Opera */
+    }
+    .scrollbar-small::-webkit-scrollbar {
+        width: 12px;
+    }
+
