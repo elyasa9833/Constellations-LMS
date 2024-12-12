@@ -41,8 +41,6 @@ Route::group(['middleware' => ['auth']], function () {
 
     /* Route Group For Course*/
     Route::prefix('course')->name('course.')->group(function () {
-        // Route::get('/chapter',  function(){return view('pages.course_chapter.view');});
-
         Route::get('/', [CourseController::class, 'index'])->name('index');
         Route::post('/store', [CourseController::class, 'store'])->name('store');
         Route::get('/{course}/chapter', [CourseController::class, 'show'])->name('show');

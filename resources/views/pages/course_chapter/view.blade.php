@@ -58,7 +58,7 @@
                 <div class="w-full border-b-2 border-[#383838] relative">
                     <!-- Course Cover -->
                     <img class="object-cover w-full aspect-[16/9] rounded-t-md"
-                        src="https://as1.ftcdn.net/v2/jpg/05/40/88/30/1000_F_540883010_iQNEDYQ48PEXiQd9oefyVDcEpWQN9Ahq.jpg" alt="">
+                        src="{{ $course->banner ?? 'https://as1.ftcdn.net/v2/jpg/05/40/88/30/1000_F_540883010_iQNEDYQ48PEXiQd9oefyVDcEpWQN9Ahq.jpg' }}" alt="">
 
                     <!-- Gradient and Text -->
                     <div class="absolute bottom-0 flex items-end w-full px-4 pb-[4px] h-1/2 bg-gradient-to-t from-black via-black/75 to-transparent">
@@ -103,7 +103,7 @@
                 <!-- Side Menu Tab Content -->
                 <div class="h-full pb-[68%]">
                     <div x-show="sideMenu === 'details'" class="h-full px-2 pb-1 overflow-y-auto scrollbar-small">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam esse praesentium ullam sint similique reprehenderit tempora placeat nulla nostrum incidunt quo accusantium, distinctio quae beatae suscipit error quas sunt libero mollitia assumenda asperiores voluptate iusto veniam iste. Pariatur assumenda quae veniam iste, numquam sit nostrum placeat modi exercitationem sed tempora unde, maxime eaque, tempore molestias dolore. Possimus libero quibusdam vero exercitationem labore incidunt illo sed facere, qui veritatis ipsum! Modi, accusamus culpa! Repellat ipsa mollitia perferendis odit nulla quis, fuga id porro, ad modi, itaque quibusdam? Dicta voluptas distinctio soluta voluptate maxime numquam neque laborum, impedit ipsa suscipit nemo voluptates dolorem qui? Officiis rerum ab magnam eos iusto velit ipsa cumque. Dicta, enim veniam mollitia earum sint ullam quaerat qui vitae aliquid natus blanditiis. Reiciendis provident id nulla, nihil itaque, eum animi delectus iusto ab exercitationem fugiat architecto aspernatur enim inventore fuga eius doloremque quod quas expedita quaerat sapiente! Aut labore perspiciatis, veniam inventore, eos iure consequatur sunt incidunt quisquam atque deserunt quas excepturi et provident? Natus quibusdam quod rerum aut delectus, facere consequatur dolore numquam cum reiciendis nam velit provident eligendi deserunt consectetur harum reprehenderit fugiat temporibus veniam? Ut veritatis iste impedit necessitatibus dignissimos, nisi quos harum eveniet earum vitae minus cumque quod ducimus sint quia, exercitationem illum debitis ipsam officia voluptatum expedita obcaecati veniam asperiores. Explicabo quia omnis cupiditate delectus eum quis sapiente eius repellendus, doloribus animi nobis. Error quibusdam facere vero maiores necessitatibus quisquam aspernatur provident ratione aliquam! Repellendus, dicta! Accusantium, et error cupiditate soluta rerum aliquid iusto repudiandae beatae a facilis architecto accusamus odit, impedit quod eius iure? Aperiam dolor facilis ab, quam assumenda natus eligendi tempore aliquam nulla nam. Repellendus sequi totam cum quo saepe, reiciendis natus suscipit porro? Minus officiis nostrum, ea nam maiores repudiandae blanditiis ad quaerat repellendus ut, doloremque numquam ducimus aperiam dolores dolor assumenda quibusdam nemo perspiciatis deserunt molestias fuga, accusantium atque recusandae. Eos quos minima fugiat aliquid voluptatem autem nulla, omnis recusandae harum tenetur obcaecati reiciendis eaque consectetur ipsam consequuntur molestiae quibusdam numquam aperiam! Alias hic accusamus sapiente laudantium neque officiis ab odio, ad temporibus cum eligendi ullam minima? Asperiores facilis amet vel exercitationem nobis quaerat magni at possimus, harum dolorem in dolore nulla, pariatur alias sapiente aut nisi officiis provident nostrum voluptates delectus! Quaerat exercitationem autem dolorum vel, earum magni quidem cum. Rem iure optio fugiat dolorum reprehenderit eum culpa nulla dolores voluptatem! Harum ullam aliquam aliquid voluptatem porro. Magni ad ducimus possimus numquam. Sunt laborum optio corrupti nihil, eius aliquam eveniet dicta at voluptas exercitationem? Fuga aliquam similique ipsam, illum perspiciatis ullam temporibus quaerat laboriosam error optio, porro odio recusandae? Impedit sunt labore inventore porro nulla tempora dolores molestiae ad facere, ducimus repellendus iure mollitia eaque dicta itaque reprehenderit aliquam quae aperiam veniam officia voluptatem. Mollitia vero omnis exercitationem culpa! Dolor odio veniam earum asperiores deleniti eos, doloribus itaque perspiciatis rerum sint dicta provident, corporis beatae, debitis inventore quod sunt ipsa libero autem nesciunt quia fugit illo fuga! Itaque, laboriosam sequi. Porro aliquam qui dolores facilis voluptatem ex.
+                        {{ $course->description }}
                     </div>
                     <div x-show="sideMenu === 'chapter'" class="h-full px-2 pb-1 overflow-y-auto scrollbar-small">
                         <!-------------------------------------------->
@@ -138,20 +138,20 @@
                                 </div>
                             </div> --}}
 
-                            @for ($i = 1; $i < 20; $i++)
+                            @foreach ($course->chapters as $i => $chapter)
                                 <div class="border border-[#545454] rounded-md shadow-2xl">
-                                    <button @click="open === {{$i}} ? open = null : open = {{$i}}" class="flex items-center justify-between w-full px-4 py-2 text-left">
-                                        <span class="font-medium">{{$i}}: Example Chapter {{$i}}</span>
+                                    <button @click="open === {{$i+1}} ? open = null : open = {{$i+1}}" class="flex items-center justify-between w-full px-4 py-2 text-left">
+                                        <span class="font-medium">{{$i+1}}: {{ $chapter->title }}</span>
                                         <div class="flex items-center gap-2">
                                             <span class="text-md">0/10</span>
-                                            <svg :class="open === {{$i}} ? 'rotate-[540deg]' : ''"
+                                            <svg :class="open === {{$i+1}} ? 'rotate-[540deg]' : ''"
                                                 class="w-6 h-5 font-semibold transition-transform duration-500 border border-white rounded-md"
                                                 fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                                             </svg>
                                         </div>
                                     </button>
-                                    <div x-show="open === {{$i}}" x-collapse class="px-4 pb-2 space-y-2">
+                                    <div x-show="open === {{$i+1}}" x-collapse class="px-4 pb-2 space-y-2">
                                         <div class="flex items-center gap-2">
                                             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <circle cx="8" cy="8" r="3" fill="#A1A1AA"></circle>
@@ -166,7 +166,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            @endfor
+                            @endforeach
 
 
 

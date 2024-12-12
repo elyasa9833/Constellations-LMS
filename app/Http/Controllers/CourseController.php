@@ -65,17 +65,14 @@ class CourseController extends Controller
      */
     public function show(Course $course)
     {
-        $chapters = CourseChapter::select('id', 'course_id', 'title', 'data')
-            ->where('course_id', $course->id)
-            ->get();
-
         $course = Course::select('id', 'name', 'description', 'banner')
+            ->with('chapters:id,course_id,title')
             ->where('id', $course->id)
             ->first();
 
         $course->banner = $course->banner ? Storage::disk('public')->url(config('filesystems.directory.course.banner') . '/' . $course->banner) : null;
 
-        return view('pages.course_chapter.view', compact('chapters'));
+        return view('pages.course_chapter.view', compact('course'));
     }
 
     /**
