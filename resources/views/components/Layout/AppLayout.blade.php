@@ -153,7 +153,7 @@
         <!-- Side Nav -->
 
         <!-- Main Container -->
-        <div class="flex flex-1 flex-col bg-[#191919] text-white px-4 pt-4">
+        <div class="flex flex-1 flex-col bg-[#191919] text-white px-4 pt-4 pb-2">
 
             <!-- Header -->
             <x-header title="{{$title}}" />

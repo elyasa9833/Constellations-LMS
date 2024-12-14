@@ -1,7 +1,7 @@
 <x-app-layout title="Dashboard">
 
     <!-- Main Content -->
-    <div class="grid grid-rows-16 grid-cols-11 h-full max-w-[1980px] w-full gap-6 overflow-auto ">
+    <div class="grid grid-rows-16 grid-cols-11 h-full max-w-[1980px] w-full gap-6 overflow-auto pt-2">
 
         <!-- Content starts here -->
 

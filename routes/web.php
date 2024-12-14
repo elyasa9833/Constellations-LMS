@@ -17,11 +17,7 @@ use App\Http\Controllers\GoogleAuthController;
 // });
 
 Route::get('/', function () {
-    // return view('layouting', compact('carouselItems'));
-    // return view('pages.dashboard.page');
-    // return view('test');
-    // return view('pages.dashboard.view');
-    return view('pages.template.view');
+    return view('pages.landing.view');
 });
 
 // Google Auth
