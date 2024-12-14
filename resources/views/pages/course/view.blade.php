@@ -1,6 +1,6 @@
 <x-app-layout title="course">
     <div x-data="{ activeTab: 'home' }" class="w-full max-w-[1700px]">
-        <div class="h-full pt-4 overflow-hidden">
+        <div class="h-full overflow-hidden">
             <!--Tabs-->
             <div class="flex flex-col w-full gap-2 mb-2">
                 <!-- Tab Items -->
@@ -71,7 +71,7 @@
 
             <!--Content-->
             <div class="h-full">
-                <div x-show="activeTab === 'home'" class="h-full pt-4 overflow-y-auto pb-[7%]">
+                <div x-show="activeTab === 'home'" class="h-full pt-4 overflow-y-auto pb-[8%]">
                     <div class="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 justify-items-center">
                         @for ($i = 0; $i < 10; $i++)
                         <!--Moving Gradient Card Alpine Array-->
