@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Course;
 use Illuminate\Http\Request;
+use App\Enums\CourseStatusEnum;
 
 class CourseController extends Controller
 {
@@ -12,7 +13,19 @@ class CourseController extends Controller
      */
     public function index()
     {
-        //
+        // creator_id ganti menjadi creator->name, category_id ganti menjadi category->name
+        // hide creator_id, category_id
+        $courses = Course::select('id', 'creator_id', 'category_id', 'name', 'description', 'banner', 'cover', 'total_experience', 'status')
+            ->with(['creator:id,nickname', 'category:id,name', 'chapters'])
+            ->get();
+
+        // hitung jumlah chapter
+        $courses->map(function ($course) {
+            $course->total_chapter = $course->chapters->count();
+            unset($course->chapters);
+            return $course;
+        });
+        return view('pages.course.view', compact('courses'));
     }
 
     /**
@@ -28,7 +41,22 @@ class CourseController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validate = $request->validate([
+            'creator_id' => 'required|ulid',
+            'category_id' => 'required|ulid',
+            'name' => 'required',
+            'description' => 'required',
+            'banner' => 'nullable',
+            'cover' => 'nullable',
+            'total_experience' => 'required',
+            'status' => 'required', 'in:' . implode(',', CourseStatusEnum::values()),
+        ]);
+
+        $course = Course::create($validate);
+        return response()->json([
+            'data' => $course,
+            'message' => 'Course created successfully'
+        ]);
     }
 
     /**
@@ -36,7 +64,10 @@ class CourseController extends Controller
      */
     public function show(Course $course)
     {
-        //
+        $course = Course::find($course->id);
+        return response()->json([
+            'data' => $course
+        ]);
     }
 
     /**
@@ -52,7 +83,23 @@ class CourseController extends Controller
      */
     public function update(Request $request, Course $course)
     {
-        //
+        $validate = $request->validate([
+            'creator_id' => 'required|ulid',
+            'category_id' => 'required|ulid',
+            'name' => 'required',
+            'description' => 'required',
+            'banner' => 'nullable',
+            'cover' => 'nullable',
+            'total_experience' => 'required',
+            'status' => 'required', 'in:' . implode(',', CourseStatusEnum::values()),
+        ]);
+
+        $course = Course::find($course->id);
+        $course->update($validate);
+        return response()->json([
+            'data' => $course,
+            'message' => 'Course updated successfully'
+        ]);
     }
 
     /**
@@ -60,6 +107,10 @@ class CourseController extends Controller
      */
     public function destroy(Course $course)
     {
-        //
+        $course = Course::find($course->id);
+        $course->delete();
+        return response()->json([
+            'message' => 'Course deleted successfully'
+        ]);
     }
 }

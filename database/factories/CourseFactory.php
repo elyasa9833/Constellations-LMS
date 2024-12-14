@@ -18,9 +18,11 @@ class CourseFactory extends Factory
      */
     public function definition(): array
     {
+        $userId = User::all()->random()->id;
+        $categoryId = CourseCategory::all()->random()->id;
         return [
-            'creator_id' => User::factory(),
-            'category_id' => CourseCategory::factory(),
+            'creator_id' => $userId ?? User::factory(),
+            'category_id' => $categoryId ?? CourseCategory::factory(),
             'name' => fake()->sentence(),
             'description' => fake()->paragraph(),
             'total_experience' => fake()->numberBetween(100, 1000),
